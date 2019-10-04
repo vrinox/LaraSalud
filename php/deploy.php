@@ -6,7 +6,7 @@
  * Used for automatically deploying websites via GitHub
  * Based on: https://gist.github.com/oodavid/1809044
  */
-$key = '[SET_YOUR_RANDOM_KEY]';
+$key = 'push';
 if ($_GET['key'] != $key){
     header('Location: ./');
     die();

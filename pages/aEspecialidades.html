@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <link rel="import" href="html-Templates/metaAdds.html">
+  <link rel="import" href="html-Templates/cssAddsGeneral.html">
+  <!-- templates -->
+  <link rel="import" href="html-Templates/adminHeader">
+  <link rel="import" href="html-Templates/adminFooter.html">
+  <script src="https://cdn.tiny.cloud/1/bylnd8nuvi8ba0uw0un57vcprn5jyyxbd1so3v7keff4rkgb/tinymce/5/tinymce.min.js"
+    referrerpolicy="origin"></script>
+  <title>LS Admin - Especialidades</title>
+</head>
+
+<!--Portada y navegacion-->
+
+<body id="page-top">
+
+  <div id="headerAdminContainer"></div>
+  <!-- Begin Page Content -->
+  <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Agregar Especialidades</h1>
+    </div>
+
+    <form method="POST">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Especialidad</label>
+        <input type="input" class="form-control" id="exampleFormControlInput1" name="especialidad"
+          placeholder="ej. Psicología">
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="medicos" id="inlineCheckbox1" value="1">
+        <label class="form-check-label" for="inlineCheckbox1">Médicos</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="medicos" id="inlineCheckbox2" value="0">
+        <label class="form-check-label" for="inlineCheckbox2">Otras Especialidades</label>
+      </div>
+      <button type="submit" name="agregar" class="btn mb-2" style="background-color: rgb(255,255,153)">Agregar</button>
+      <div class="form-group mt-2">
+        <label for="exampleFormControlSelect1">Buscar especialidades existentes</label>
+        <select name="busqueda" class="form-control" id="exampleFormControlSelect1">
+          <option value="M">Médicos</option>
+          <option value="O">Otras especialidades</option>
+        </select>
+      </div>
+      <button type="submit" name="buscar" class="btn mb-2" style="background-color: rgb(255,255,153)">Buscar</button>
+    </form>
+
+    <!-- Content Row -->
+    <div class="row">
+      <!-- Formulario de especialidades-->
+      <table id="busqueda" class="ml-5 mr-5 mt-2" width="40%">
+        <tr>
+          <th width="82%">Especialidades</th>
+          <th width="9%">Modificar</th>
+          <th width="9%">Eliminar</th>
+        </tr>
+        <div id="listaContainer"></div>
+      </table>
+    </div>
+
+    <div id="footerAdminContainer"></div>
+  </div>
+  <link rel="import" href="html-Templates/scriptsAdd.html">
+  <script src="js/cargaStandardAdmin.js"></script>
+</body>
+
+</html>
