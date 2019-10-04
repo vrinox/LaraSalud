@@ -1,0 +1,362 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+ 
+    font-family: Corbel;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+.fondo{
+  background: url(imagenes/salud.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body{
+    margin: 0;
+    font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif !important; 
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.navbar-separador{
+  padding-right: 6px;
+}
+img {
+    border-style: none;
+}
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+header.masthead {
+    padding-top: 5rem;
+    padding-bottom: calc(5rem - 50px);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,0)), color-stop(35%, rgba(255,255,255,0.61)), color-stop(57%, rgba(255,255,255,1))), url("../imagenes/salud.jpg");;
+    background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,0.61) 35%, rgba(255,255,255,1) 50%), url("../imagenes/salud.jpg");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: middle;
+    
+}
+
+.social {
+	position: fixed; /* Hacemos que la posición en pantalla sea fija para que siempre se muestre en pantalla*/
+	right: 0; /* Establecemos la barra en la derecha */
+	top: 0; /* Bajamos la barra 50px de arriba a abajo */
+	z-index: 2000; /* Utilizamos la propiedad z-index para que no se superponga algún otro elemento como sliders, galerías, etc */
+}
+ 
+	.social ul {
+		list-style: none;
+	}
+ 
+	.social ul li a {
+		display: inline-block;
+		color:#fff;
+		background: #000;
+        padding-top: 3px;
+        font-size: 70%;
+        width: 65px;
+        height: 70px;
+        text-align: center;
+		text-decoration: none;
+		-webkit-transition:all 500ms ease;
+		-o-transition:all 500ms ease;
+		transition:all 500ms ease; /* Establecemos una transición a todas las propiedades */
+	}
+ 
+	.social ul li .barraLateral {background:rgb(11,166,156)} /* Establecemos los colores de cada red social, aprovechando su class */
+ 
+	.social ul li a:hover {
+		background: #000; /* Cambiamos el fondo cuando el usuario pase el mouse */
+		padding-bottom: 10px; /* Hacemos mas grande el espacio cuando el usuario pase el mouse */
+  }
+  .social ul li a:hover {
+		background: #000; /* Cambiamos el fondo cuando el usuario pase el mouse */
+		padding-bottom: 10px; /* Hacemos mas grande el espacio cuando el usuario pase el mouse */
+  }
+  .p-small{
+    font-size: 90%;
+  }
+  .p-smaller{
+    font-size: 80%;
+  }
+  /*interlineado*/
+  .e-1{
+    line-height: 90%;
+  }
+  .e-100{
+    line-height: 100%;
+  }
+  .e-2{
+    line-height: 80%;
+  }
+
+  .publicidad{
+    margin:0;
+    padding:0;
+  }
+
+  .embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 190px;
+    overflow: hidden;
+    max-width: 100%;
+    } 
+    
+    .embed-container iframe, 
+    .embed-container object, 
+    .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 190px !important;
+    }
+    span.circulo{
+      width: 50px !important; 
+      height: 50px !important;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     background-color: rgb(11,166,156);
+}
+.especialidades{
+  display: block;
+  width: 85%;
+  /*height: calc(1.5em + 0.75rem + 2px);*/
+  height: 4% !important;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-left: 3.5rem !important; 
+  margin-bottom: 1rem !important;
+}
+/*.Oespecialidades ul {
+		list-style: none;
+	}
+.Oespecialidades a {
+		display: inline-block;
+		color:#fff;
+		background: #000;
+        font-size: 70%;
+        width: 65px;
+        height: 70px;
+        text-align: center;
+		text-decoration: none;
+	}
+.Oespecialidades ul li a:hover {
+		background: #000; /* Cambiamos el fondo cuando el usuario pase el mouse */
+/*		padding-bottom: 10px; /* Hacemos mas grande el espacio cuando el usuario pase el mouse */
+ /* }*/
+
+
+#Oespecialidades a:hover {
+		background: #000; /* Cambiamos el fondo cuando el usuario pase el mouse */
+		padding-bottom: 10px; /* Hacemos mas grande el espacio cuando el usuario pase el mouse */
+  }
+.premium{
+  display: block;
+  width: 100%;
+  height: 220px;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-left: 0.2rem !important; 
+  margin-bottom: 1rem !important;
+}
+.vertical-menu {
+  width: -webkit-calc(100% - 0.9rem);
+  width: calc(100% - 0.9rem);
+  width: 100%;
+  height: 85%;
+  overflow-y: scroll;
+}
+.vertical-menu .contenedor a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+.contenedor {
+  position: absolute;
+  display: flex;
+  width: -webkit-calc(100% - 1rem);
+  width: calc(100% - 1rem);
+}
+.contenedor h6{
+    font-size:95%;
+}
+.margenColaboradores {
+  float: right;
+  width: 1rem;
+  height: 100%;
+  position: relative;
+  background: rgb(255, 255, 255);
+  z-index: 2;
+}
+.up {
+  position: absolute;
+  top: 0; 
+}
+
+.down {
+  position: absolute;
+  bottom: 0;
+}
+.topcorner{
+  position:absolute;
+  top:10px;
+  right:68px;
+ }
+ .borde3d{
+   border-style: outset;
+   border-right-width: 7px;
+   border-bottom-width: 7px;
+ }
+ /*--------------------------lista Seleccionable jquery ui-----------------------------*/
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        text-align: left;
+        padding: 6px;
+        
+    }
+    tr:nth-child(even){background-color: #f2f2f2}
+    th {
+        background-color: rgb(11,166,156);
+        color: white;
+    }
+    .main-wrapper{
+	    width:50%;
+        background:#E0E4E5;
+	    border:1px solid #b5b3b3;
+	    padding:25px;
+    }
+    hr {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+     #sortable-8{ list-style-type: none; margin: 0; 
+            padding: 1em; width: 50%; float:left;}
+     #sortable-8 li{ margin: 0 3px 3px 3px; padding: 1em; 
+        padding-left: 4em; font-size: 17px; height: 16px; }
+     .default {
+        background: #cedc98;
+        border: 1px solid #DDDDDD;
+        color: #333333;
+     }
+     
+@media screen and (max-width: 480px) {
+  #logo {
+    max-width: 50%;
+    height: auto;
+  }
+  body{
+      width:88%;
+      margin:0;
+  }
+
+  img.publicidad {
+    display: none;
+  }
+  .social {
+	position: fixed; /* Hacemos que la posición en pantalla sea fija para que siempre se muestre en pantalla*/
+	right: 12%; /* Establecemos la barra en la derecha */
+	top: 0; /* Bajamos la barra 50px de arriba a abajo */
+	z-index: 2000; /* Utilizamos la propiedad z-index para que no se superponga algún otro elemento como sliders, galerías, etc */
+    }
+    .social ul{
+        width: 50%;
+        padding-left:0;
+    }
+  .social ul li a {
+        padding-top: 1px;
+        font-size: 45%;
+        width: 30px;
+        height: 35px;
+      
+  }
+  .social ul li a img {
+        width: 50%;
+        height: auto;
+      
+  }
+  .card{
+      border: none;
+  }
+  #calendario{
+      width: 250px;
+      height: 200px;
+      margin-left: 7%;
+  }
+  #mColaboradores{
+      margin: 5% 20% 5% 15%;
+      margin-top: 3%;
+      width: 70%;
+      text-align: center;
+  }
+  .contenedor{
+    width: 30%;
+     display: block;
+      
+  }
+  .vertical-menu{
+     display: block;
+     height: 80%;
+  }
+  #info p{
+      text-align: center;
+  }
+}
+@media screen and (min-width: 540px) {
+
+ 
+
+}
+
+     

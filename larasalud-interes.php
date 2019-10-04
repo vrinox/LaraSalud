@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<title>LS - Interes</title>
+
+<?php
+    include 'php/header.php';
+?>
+   <section id="Articulos">
+    <!--Carrusel con los destacados de la semana-->
+    <div class="container" style="margin-right:20%; margin-left:0.2%;">
+    <div class="row pt-4 ml-2">
+      <div class="col-sm-475 pl-0">
+        <div id="carouselExampleIndicators" class="carousel slide w-100" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="imagenes/thumbnails/x400/antivacuna.jpg" class="d-block w-100" alt="antivacuna">
+            </div>
+            <div class="carousel-item">
+              <img src="imagenes/thumbnails/x400/menopausia.jpg" class="d-block w-100" alt="menopausia">
+            </div>
+            <div class="carousel-item">
+              <img src="imagenes/thumbnails/x400/intoxicacion.jpg" class="d-block w-100" alt="intoxicacion">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+          </a>
+        </div>
+        <!--Articulos resumen del inicio-->
+        <!--Tarjeta numero 1 (abajo del carrusel)-->
+        <div class="card mb-2 mt-4" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-lg-4 view overlay zoom>
+              <img src="imagenes/tarjetas/hielo.jpg" class="card-img" alt="hielo">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body pt-1">
+                <h7 class="card-title font-weight-bold">Card title</h7>
+                <p class="card-text p-small e-1 text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <!--<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Tarjeta numero 2 (abajo del carrusel)-->
+        <div class="card mb-2" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <img src="imagenes/tarjetas/hielo.jpg" class="card-img" alt="hielo">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body pt-1">
+                <h7 class="card-title font-weight-bold">Card title</h7>
+                <p class="card-text p-small e-1 text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!--Tarjeta numero 3 (abajo del carrusel)-->
+        <div class="card mb-2" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <img src="imagenes/tarjetas/hielo.jpg" class="card-img" alt="hielo">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body pt-1">
+                <h7 class="card-title font-weight-bold">Card title</h7>
+                <p class="card-text p-small e-1 text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+      <!--Tarjeta numero 1 (a la derecha del carrusel)-->
+      <div class="col-sm-475 pl-0">
+        <div class="card mb-2" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <img src="imagenes/tarjetas/hielo.jpg" class="card-img" alt="hielo">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body pt-1">
+                <h7 class="card-title font-weight-bold">Card title</h7>
+                <p class="card-text p-small e-1 text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Tarjeta numero 2 (a la derecha del carrusel)-->
+        <div class="card mb-2" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <img src="imagenes/tarjetas/hielo.jpg" class="card-img" alt="hielo">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body pt-1">
+                <h7 class="card-title font-weight-bold">Card title</h7>
+                <p class="card-text p-small e-1 text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Tarjeta numero 3 (a la derecha del carrusel)-->
+        <div class="card mb-2" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <img src="imagenes/tarjetas/hielo.jpg" class="card-img" alt="hielo">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body pt-1">
+                <h7 class="card-title font-weight-bold">Card title</h7>
+                <p class="card-text p-small e-1 text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Tarjeta numero 4 (a la derecha del carrusel)-->
+        <div class="card mb-2" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <img src="imagenes/tarjetas/hielo.jpg" class="card-img" alt="hielo">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body pt-1">
+                <h7 class="card-title font-weight-bold">Card title</h7>
+                <p class="card-text p-small e-1 text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <!--Tarjeta numero 5 (a la derecha del carrusel)-->
+        <div class="card mb-2" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-lg-4">
+                <img src="imagenes/tarjetas/hielo.jpg" class="card-img" alt="hielo">
+              </div>
+              <div class="col-lg-8">
+                <div class="card-body pt-1">
+                  <h7 class="card-title font-weight-bold">Card title</h7>
+                  <p class="card-text p-small e-1 text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+              </div>
+            </div>
+          </div>  
+          <!--Tarjeta numero 6 (a la derecha del carrusel)-->
+        <div class="card mb-2" style="max-width: 540px;">
+          <div class="row no-gutters">
+            <div class="col-lg-4">
+              <img src="imagenes/tarjetas/hielo.jpg" class="card-img" alt="hielo">
+            </div>
+            <div class="col-lg-8">
+              <div class="card-body pt-1">
+                <h7 class="card-title font-weight-bold">Card title</h7>
+                <p class="card-text p-small e-1 text-justify">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+      <div class="col-sm-25 pl-3 text-right">
+          <div class="row text-center mb-2">
+              <div class="col rounded-lg pt-1 pb-1" style="background-color: rgb(11,166,156); color:white;">NUTRICION</div>
+              <div class="w-100" ></div>
+              <div class="col rounded-lg pt-1 pb-1" style="background-color: #c0c0c0; color:gray-dark;">PSICOLOGIA</div>
+              <div class="w-100"></div>
+              <div class="col rounded-lg pt-1 pb-1" style="background-color: rgb(11,166,156); color:white;">TIPS</div>
+              <div class="w-100"></div>
+              <div class="col rounded-lg pt-1 pb-1" style="background-color: #c0c0c0; color:gray-dark;">REMEDIOS NATURALES</div>
+              <div class="w-100"></div>
+              <div class="col rounded-lg pt-1 pb-1" style="background-color: rgb(11,166,156); color:white;">CURIOSIDADES</div>
+              <div class="w-100"></div>
+              <div class="col rounded-lg pt-1 pb-1" style="background-color: #c0c0c0; color:gray-dark;">ENFERMEDADES</div>
+              <div class="w-100"></div>
+              <div class="col rounded-lg pt-1 pb-1" style="background-color: rgb(11,166,156); color:white;">RECOMENDACIONES</div>
+              <div class="w-100"></div>
+              <div class="col rounded-lg pt-1 pb-1" style="background-color: #c0c0c0; color:gray-dark;">ULTIMAS NOTICIAS</div>
+              <div class="w-100"></div>
+              <div class="col rounded-lg pt-1 pb-1" style="background-color: rgb(11,166,156); color:white;">AVANCES TECNOLOGICOS</div>
+              <div class="w-100"></div>
+              <div class="col mt-3 pr-1 pl-1"><img class="img-fluid publicidad" src="http://via.placeholder.com/230x588"></div>
+            </div>
+        
+        </div>
+      </div>
+      <div class="row pt-3 pl-4 pr-2 pb-3"> 
+         <!--Carrusel con los destacados de la semana-->
+         <div id="carouselInteres" class="carousel slide w-100 p-2" style="background-color: rgb(199,237,227);" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselInteres" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselInteres" data-slide-to="1"></li>
+              <li data-target="#carouselInteres" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+              <div class="carousel-item active w-20">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100 mr-2" alt="antivacuna">
+                <img src="imagenes/thumbnails/x300/intoxicacion.jpg" class="d-block w-100 mr-2" alt="menopausia">
+                <img src="imagenes/thumbnails/x300/menopausia.jpg" class="d-block w-100 mr-2" alt="antivacuna">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100 mr-2" alt="antivacuna">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100" alt="menopausia">
+              </div>
+              <div class="carousel-item w-20">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100 mr-2" alt="menopausia">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100 mr-2" alt="menopausia">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100 mr-2" alt="antivacuna">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100 mr-2" alt="antivacuna">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100" alt="menopausia">
+              </div>
+              <div class="carousel-item w-20">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100 mr-2" alt="intoxicacion">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100 mr-2" alt="menopausia">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100 mr-2" alt="antivacuna">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100 mr-2" alt="antivacuna">
+                <img src="imagenes/thumbnails/x300/antivacuna.jpg" class="d-block w-100" alt="menopausia">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselInteres" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselInteres" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+          </a>
+          </div>
+        
+          <div class="w-100"></div>
+          <div class="col-md-12 pt-2 mt-2 text-center">
+              <img class="img-fluid h-100 w-75 position-relative" src="http://via.placeholder.com/830x188">
+          </div>
+        </div>
+    </div>
+     
+    </div>
+   </section>
+  <?php
+    include 'php/footer.php';
+?>
+<!-- JQuery script -->
+<script src="js/jQuery.js"></script>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script type="js/myJQuery.js"></script>
+</body>
+</html>

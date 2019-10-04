@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <link rel="import" href="html-Templates/metaAdds.html">
+
+  <title>Lara Salud</title>
+  <link rel="shortcut icon" href="imagenes/iconos/LOGO.ico" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="css/EstilosLS.css"></head>
+  <style type="text/css">
+      body, html {
+            height: 100% !important;
+        }
+        .bg-img {
+            /* The image used */
+            background-image: url("imagenes/adminlogin.jpg") !important; 
+
+            /* Control the height of the image */
+            min-height: 380px !important;
+            height: 100% !important;
+            width: 100% !important;
+            /* Center and scale the image nicely */
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+            position: relative !important;
+        }
+  </style>
+
+<body class="bg-img">
+<a href="larasalud.php"><img class="mb-3 mt-5 ml-auto mr-auto" style="display:block;" src="imagenes/LOGO.png"></a>
+    <div class="container-fluid w-50 pb-3" style="background-color: rgba(0, 0, 0, 0.3);">
+        
+        <h3 class="text-center" style="color: white;">Administrador</h3>
+        <div id="error">
+            <?php echo $error; ?>
+        </div>
+        <form method="POST">
+            <fieldset class="formgroup">
+                <input class="form-control" type="password" name="clave" placeholder="Escribe la contraseña">
+            </fieldset>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="permanecerIniciada" value=1>Permanecer Iniciada
+                </label>
+            </div>
+            <fieldset class="formgroup">
+                <input class="btn btn-info ml-auto mr-auto" style="display:block;" type="submit" name="submit" value="Inciar Sesión">
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>
