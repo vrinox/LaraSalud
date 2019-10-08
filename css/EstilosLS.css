@@ -297,7 +297,7 @@ header.masthead {
     height: auto;
   }
   body{
-      width:88%;
+      width:100%;
       margin:0;
   }
 
@@ -306,7 +306,7 @@ header.masthead {
   }
   .social {
 	position: fixed; /* Hacemos que la posición en pantalla sea fija para que siempre se muestre en pantalla*/
-	right: 12%; /* Establecemos la barra en la derecha */
+	/* right: 12%; Establecemos la barra en la derecha */
 	top: 0; /* Bajamos la barra 50px de arriba a abajo */
 	z-index: 2000; /* Utilizamos la propiedad z-index para que no se superponga algún otro elemento como sliders, galerías, etc */
     }
