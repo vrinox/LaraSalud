@@ -11,33 +11,48 @@ class  cls_Directorio extends Core{
   public function f_SetsForm($pa_Form,$pa_Files){
     $this->aa_Form=$pa_Form;
     $this->aa_Form['nombre'] = strtoupper($this->aa_Form['nombre']);
-    $this->aa_Form['tipo'] = $this->aa_Form['directorio'];
+    $this->aa_Form['tipo'] = $this->aa_Form['directorio '];
     $this->aa_Files=$pa_Files;
     $this->aa_Form['dir_subida'] = "imagenes/logos/".$this->aa_Form['tipo']."/";
 	}		
   
   public function	f_GetsForm(){			
 		return $this->aa_Form;				
-	}		
-	
+  }
+  
+  public function gestionar(){
+    $resultado = array();
+    switch($this->aa_Form['operacion']){
+      case 'buscar': 
+        $resultado['success'] = $this->buscar();
+        $resultado['directorio'] = $this->get();
+        break;
+      case:'agregar':
+        $resultado['success'] = $this->agregar();
+        break;
+      case:'modificar':
+        $resultado['success'] = $this->modificar()
+        break;
+      case:'posicionar':
+        $resultado['directorios'] = $this->buscarPremium();
+        break;
+      case:'enviarPos':
+        break;
+    }
+    return $resultado;
+  }
+  public function asignacion($externo){
+    foreach ($externo as $clave => $valor){
+      $this->aa_Form[$clave] = $valor; 
+    }
+  }
 	public function buscar(){							
     $lb_Enc=false;	    
 		$ls_Sql="SELECT * FROM directorio WHERE nombre='".$this->aa_Form['nombre']."' AND tipo='".$this->aa_Form['tipo']."' LIMIT 1";
 		$this->f_Con();	
 		$lr_Tabla=$this->f_Filtro($ls_Sql);				
 		if($la_Tupla=$this->f_Arreglo($lr_Tabla)){
-			$this->aa_Form['id']=$la_Tupla["id"];
-			$this->aa_Form['premium']=$la_Tupla["premium"];
-			$this->aa_Form['direccion']=$la_Tupla["direccion"];
-			$this->aa_Form['ciudad']=$la_Tupla["ciudad"];
-			$this->aa_Form['mapa']=$la_Tupla["mapa"];
-			$this->aa_Form['telefono']=$la_Tupla["telefono"];
-			$this->aa_Form['descripcion']=$la_Tupla["descripcion"];
-			$this->aa_Form['horario']=$la_Tupla["horario"];
-			$this->aa_Form['facebook']=$la_Tupla["facebook"];
-			$this->aa_Form['correo']=$la_Tupla["correo"];
-			$this->aa_Form['instagram']=$la_Tupla["instagram"];
-      $this->aa_Form['correo']=$la_Tupla["linkedin"];
+			$this->asignar();
 			$lb_Enc=true;
 		}				
 		$this->f_Cierra($lr_Tabla);						
@@ -53,19 +68,7 @@ class  cls_Directorio extends Core{
     $this->f_Con();
     $lrTb=$this->f_Filtro($lsSql);				
     While($laTupla=$this->f_Arreglo($lrTb)){	
-      $laMatriz [$liI] ["id"]= $laTupla ["id"];
-      $laMatriz [$liI] ["nombre"]= $laTupla ["nombre"];
-      $laMatriz [$liI]['premium']=$la_Tupla["premium"];
-      $laMatriz [$liI]['direccion']=$la_Tupla["direccion"];
-      $laMatriz [$liI]['ciudad']=$la_Tupla["ciudad"];
-      $laMatriz [$liI]['mapa']=$la_Tupla["mapa"];
-      $laMatriz [$liI]['telefono']=$la_Tupla["telefono"];
-      $laMatriz [$liI]['descripcion']=$la_Tupla["descripcion"];
-      $laMatriz [$liI]['horario']=$la_Tupla["horario"];
-      $laMatriz [$liI]['facebook']=$la_Tupla["facebook"];
-      $laMatriz [$liI]['correo']=$la_Tupla["correo"];
-      $laMatriz [$liI]['instagram']=$la_Tupla["instagram"];
-      $laMatriz [$liI]['correo']=$la_Tupla["linkedin"];
+      $laMatriz [$liI] = $laTupla;
       $liI++;   
     }					
     $lrTb=$this->f_Filtro($lsSql);
@@ -119,7 +122,7 @@ class  cls_Directorio extends Core{
       }
 
       $this->f_Con();
-			$lb_Hecho=$this->f_Ejecutar($ls_Sql);		
+			$lb_Hecho=$this->f_Ejecutar($sql);		
       $this->f_Des();
       
       if ($lb_Hecho)
@@ -157,43 +160,19 @@ class  cls_Directorio extends Core{
       else {
         $sql = "INSERT INTO directorio";
         $sql .= "(tipo,premium,nombre,direccion,ciudad,mapa,telefono,descripcion,horario,logo,correo,facebook,instagram,linkedin) ";
-        $sql .= "VALUES('".$this->aa_Form["tipoD"]."','".$this->aa_Form["premium"]."','".$this->aa_Form["nombreD"]."','".$this->aa_Form["direccion"]."','".$this->aa_Form["ciudad"]."','".$this->aa_Form["mapa"]."','".$telefono."','".$this->aa_Form["descripcion"]."',";
+        $sql .= "VALUES('".$this->aa_Form["tipo"]."','".$this->aa_Form["premium"]."','".$this->aa_Form["nombre"]."','".$this->aa_Form["direccion"]."','".$this->aa_Form["ciudad"]."','".$this->aa_Form["mapa"]."','".$telefono."','".$this->aa_Form["descripcion"]."',";
         $sql .= "'".$this->aa_Form["horario"]."','".$this->aa_Form["logo_subido"]."','".$this->aa_Form["correo"]."','".$this->aa_Form["facebook"]."','".$this->aa_Form["instagram"]."','".$this->aa_Form["linkedin"]."')";
       }
-      if (!db_query($query))
-      {
-        $error="No hemos podido completar el registro, por favor inténtelo más tarde";
-      }
-      else
-      {
-        $exitoso.="Directorio agregado exitosamente";
-        db_close();
-      }              
-        unset($_POST['directorio'],$_POST['premiumD'],$_POST['nombreD'],$_POST['direccionD'],$_POST['ciudadD'],$_POST['mapaD'],
-        $_POST['telefonoD'],$_POST['descripcionD'],$_POST['horarioD'],$_POST['correoD'],$_POST['facebookD'],
-        $_POST['instagramD'],$_FILES['logoD']['name'],$_POST['linkedinD']);
-
-      //   $_POST = array(); 
-      }
+      
+      $this->f_Con();
+			$lb_Hecho=$this->f_Ejecutar($sql);		
+      $this->f_Des();
+      
+      $result['mensaje']=(!$lb_Hecho)?"Directorio agregado exitosamente":"No hemos podido completar el registro, por favor inténtelo más tarde";
+      
+      return $result;
+    }
   }
-  public function listar()						
-  {				
-    $laMatriz=Array();							
-    $liI=1;		
-    $ls_Sql="SELECT * FROM categorias";
-    $this->f_Con();
-    $lrTb=$this->f_Filtro($lsSql);				
-    While($laTupla=$this->f_Arreglo($lrTb)){	
-      $laMatriz [$liI] [0]= $laTupla ["id"];
-      $laMatriz [$liI] [1]= $laTupla ["nombre"];
-      $liI++;   
-    }					
-    $lrTb=$this->f_Filtro($lsSql);
-    $this->f_Cierra($lrTb);		
-    $this->f_Des();
-    return $laMatriz;
-  }
-  
   // public function f_Operacion(){						
 	// 	$lb_Hecho=false;
 	// 	if($this->aa_Form['Operacion']=="incluir"){		

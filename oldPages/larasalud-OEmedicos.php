@@ -31,7 +31,7 @@
                                 
                                 <img class=\"p-2 float-left\" src=\"".$logo."\" width=\"90px\"class=\"float-left mr-2\">
                                 <div class=\"col w-100 pt-2\">
-                                    <h3 style=\"color:white;\">".$filaMedicos['nombre']."</h3>
+                                  <h3 style=\"color:white;\">".$filaMedicos['nombre']."</h3>
                                 </div>
                                 <div class=\"w-100\"></div>
                                 <div class=\"col w-100 mb-3\">

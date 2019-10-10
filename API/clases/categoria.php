@@ -46,30 +46,25 @@ class  cls_Categoria extends Core{
 			$this->f_Cierra($lrTb);		
 			$this->f_Des();
 			return $laMatriz;							
+	}
+	public function gestionar(){
+    $resultado = array();
+    switch($this->aa_Form['operacion']){
+      case 'buscar': 
+        $resultado['success'] = $this->buscar();
+        $resultado['categoria'] = $this->get();
+        break;
+      case:'listar':
+				$resultado['categorias'] = $this->listar();				
+				$resultado['success']=(count($resultado['categorias'])>0)
+        break;
+    }
+    return $resultado;
   }
-  
-  // public function f_Operacion(){						
-	// 	$lb_Hecho=false;
-	// 	if($this->aa_Form['Operacion']=="incluir"){		
-	// 		$ls_Sql="INSERT INTO ambiente (codigo,nombre,direccion,estatus,borrado,tip_cod)";						
-	// 		$ls_Sql.="VALUES";							
-	// 		$ls_Sql.="('".$this->aa_Form['Codigo']."','".$this->aa_Form['Nombre']."',";
-	// 		$ls_Sql.="'".$this->aa_Form['Direccion']."','".$this->aa_Form['Estatus']."'";							
-	// 		$ls_Sql.=",'I','".$this->aa_Form['Tipo']."')";
-	// 	}else if($this->aa_Form['Operacion']=="modificar"){
-	// 		$ls_Sql="UPDATE ambiente SET nombre='".$this->aa_Form['Nombre']."',";	
-	// 		$ls_Sql.="direccion='".$this->aa_Form['Direccion']."', estatus='".$this->aa_Form['Estatus']."',";		
-	// 		$ls_Sql.="tip_cod='".$this->aa_Form['Tipo']."' ";
-	// 		$ls_Sql.=" WHERE(codigo='".$this->aa_Form['Codigo']."')";				
-	// 	}else if($this->aa_Form['Operacion']=="eliminar"){
-	// 		$ls_Sql="UPDATE ambiente SET borrado='A' WHERE(codigo='".$this->aa_Form['Codigo']."')";					
-	// 	}				
-	// 	if($this->f_Supervisar("Ambiente",$ls_Sql,"Usuario en session")){			
-	// 		$this->f_Con();
-	// 		$lb_Hecho=$this->f_Ejecutar($ls_Sql);		
-	// 		$this->f_Des();
-	// 	}				
-	// 	return $lb_Hecho;
-	// }										
+  public function asignacion($externo){
+    foreach ($externo as $clave => $valor){
+      $this->aa_Form[$clave] = $valor; 
+    }
+  }
 }
 ?>

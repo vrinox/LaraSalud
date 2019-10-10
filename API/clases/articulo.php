@@ -28,11 +28,11 @@ class  cls_Articulo extends Core{
 		return $lb_Enc;	
   }
   
-  public function listarMedicos ()						
+  public function listar ()						
 		{				
 			$laMatriz=Array();							
 			$liI=1;		
-			$ls_Sql="SELECT id,nombre from medicos";
+			$ls_Sql="SELECT id,nombre from articulos";
 			$this->f_Con();
 			$lrTb=$this->f_Filtro($lsSql);				
 			While($laTupla=$this->f_Arreglo($lrTb)){	
@@ -45,7 +45,21 @@ class  cls_Articulo extends Core{
 			$this->f_Des();
 			return $laMatriz;							
   }
-  
+	
+	public function gestionar(){
+    $resultado = array();
+    switch($this->aa_Form['operacion']){
+      case 'buscar': 
+        $resultado['success'] = $this->buscar();
+        $resultado['articulo'] = $this->get();
+        break;
+      case:'listar':
+				$resultado['articulos'] = $this->listar();
+				$resultado['success']=(count($resultado['articulos'])>0)
+        break;
+    }
+    return $resultado;
+  }
   // public function f_Operacion(){						
 	// 	$lb_Hecho=false;
 	// 	if($this->aa_Form['Operacion']=="incluir"){		

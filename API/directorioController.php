@@ -89,9 +89,15 @@ if(array_key_exists("agregarDirectorio",$_POST))
       $dir_subida = "imagenes/logos/".$tipoD."/";
       $logo_subido = $dir_subida.basename($_FILES['logoD']['name']);
       //esta es una validacion en el caso que el usuario no suba imagen se coloca un icono que ya esta en el servidor
-      if(!basename($_FILES['logoD']['name'])){ $logo_subido = "imagenes/iconos/50x50/".$tipoD.".png";}
-      else if (move_uploaded_file($_FILES['logoD']['tmp_name'], $logo_subido)) { $exitoso = "El logo es válido y se subió con éxito<br>"; }
-      else {$error = "¡No se logro subir el logo, por favor intente de nuevo!";}
+      if(!basename($_FILES['logoD']['name'])){ 
+        $logo_subido = "imagenes/iconos/50x50/".$tipoD.".png";
+      }else if (move_uploaded_file($_FILES['logoD']['tmp_name'], $logo_subido)) { 
+        $exitoso = "El logo es válido y se subió con éxito<br>"; 
+      }
+      else {
+        $error = "¡No se logro subir el logo, por favor intente de nuevo!";
+      
+      }
       if($premium=="1") $query = "INSERT INTO directorio(tipo,premium,nombre,direccion,ciudad,mapa,telefono,descripcion,horario,logo,correo,facebook,instagram,linkedin,posicion) VALUES('".$tipoD."','".$premium."','".$nombreD."','".$direccion."','".$ciudad."','".$mapa."','".$telefono."','".$descripcion."','".$horario."','".$logo_subido."','".$correo."','".$facebook."','".$instagram."','".$linkedin."','".$posicion."')";
       else $query = "INSERT INTO directorio(tipo,premium,nombre,direccion,ciudad,mapa,telefono,descripcion,horario,logo,correo,facebook,instagram,linkedin) VALUES('".$tipoD."','".$premium."','".$nombreD."','".$direccion."','".$ciudad."','".$mapa."','".$telefono."','".$descripcion."','".$horario."','".$logo_subido."','".$correo."','".$facebook."','".$instagram."','".$linkedin."')";
       if (!db_query($query))
@@ -218,9 +224,10 @@ if(array_key_exists("agregarDirectorio",$_POST))
       $dir_subida = 'imagenes/logos/'.$tipoD.'/';
       $logo_subido = $dir_subida.basename($_FILES['logoD']['name']);
       // echo $nombreD.$premium.$direccion.$ciudad.$latitud.$longitud.$telefono.$descripcion.$horario.$logo_subido.$correo.$facebook.$instagram.$linkedin;
-      if(!basename($_FILES['logoD']['name'])){ $query = "update directorio set tipo='".$tipoD."', premium='".$premium."', nombre='".$nombreD."', direccion='".$direccion."', ciudad='".$ciudad."', mapa='".$mapa."', telefono='".$telefono."', descripcion='".$descripcion."', horario='".$horario."', correo='".$correo."', facebook='".$facebook."', instagram='".$instagram."', linkedin='".$linkedin."' where id='".$_POST['idActual']."';"; }
+      if(!basename($_FILES['logoD']['name'])){ 
+        $query = "update directorio set tipo='".$tipoD."', premium='".$premium."', nombre='".$nombreD."', direccion='".$direccion."', ciudad='".$ciudad."', mapa='".$mapa."', telefono='".$telefono."', descripcion='".$descripcion."', horario='".$horario."', correo='".$correo."', facebook='".$facebook."', instagram='".$instagram."', linkedin='".$linkedin."' where id='".$_POST['idActual']."';"; }
       else if (move_uploaded_file($_FILES['logoD']['tmp_name'], $logo_subido)) { 
-          $query = "update directorio set tipo='".$tipoD."', premium='".$premium."', nombre='".$nombreD."', direccion='".$direccion."', ciudad='".$ciudad."', mapa='".$mapa."', telefono='".$telefono."', descripcion='".$descripcion."', horario='".$horario."', logo='".$logo_subido."', correo='".$correo."', facebook='".$facebook."', instagram='".$instagram."', linkedin='".$linkedin."' where id='".$_POST['idActual']."';";
+        $query = "  ;";
           $exitoso = "El logo es válido y se subió con éxito<br>"; }
       else {$error = "¡No se logro subir el logo, por favor intente de nuevo!";}
       
