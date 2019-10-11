@@ -35,6 +35,9 @@ function obtenerClase($modelo){
     case'especialidad':
       $clase = new cls_Especialidad();
       break;
+    case'usuario':
+      $clase = new cls_Usuario();
+      break;
   }
   return $clase;
 }
