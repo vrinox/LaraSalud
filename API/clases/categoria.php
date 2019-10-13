@@ -1,5 +1,5 @@
 <?php
-include_once("./core.php");
+include_once("/home2/larasalu/public_html/API/clases/core.php");
 class  cls_Categoria extends Core{
   private $aa_Form;
 
@@ -17,9 +17,9 @@ class  cls_Categoria extends Core{
 	
 	public function buscar(){							
     $lb_Enc=false;	    
-		$ls_Sql="SELECT * FROM categoria WHERE id='".$this->aa_Form['id']."' LIMIT 1;";			
+		$lsSql="SELECT * FROM categorias WHERE id='".$this->aa_Form['id']."' LIMIT 1;";			
 		$this->f_Con();	
-		$lr_Tabla=$this->f_Filtro($ls_Sql);				
+		$lr_Tabla=$this->f_Filtro($lsSql);				
 		if($la_Tupla=$this->f_Arreglo($lr_Tabla)){
 			$this->aa_Form['id']=$la_Tupla["id"];
 			$this->aa_Form['nombre']=$la_Tupla["nombre"];
@@ -30,22 +30,19 @@ class  cls_Categoria extends Core{
 		return $lb_Enc;	
   }
   
-  public function listar()						
-		{				
-			$laMatriz=Array();							
-			$liI=1;		
-			$ls_Sql="SELECT * FROM categorias";
-			$this->f_Con();
-			$lrTb=$this->f_Filtro($lsSql);				
-			While($laTupla=$this->f_Arreglo($lrTb)){	
-				$laMatriz [$liI] [0]= $laTupla ["id"];
-				$laMatriz [$liI] [1]= $laTupla ["nombre"];
-				$liI++;   
-			}					
-			$lrTb=$this->f_Filtro($lsSql);
-			$this->f_Cierra($lrTb);		
-			$this->f_Des();
-			return $laMatriz;							
+  public function listar(){
+		$laMatriz=Array();
+		$liI=1;		
+		$lsSql="SELECT * FROM categorias";
+		$this->f_Con();
+		$lrTb=$this->f_Filtro($lsSql);				
+		While($laTupla=$this->f_Arreglo($lrTb)){	
+			$laMatriz [$liI] = $laTupla;
+			$liI++;   
+		}
+		$this->f_Cierra($lrTb);
+		$this->f_Des();
+		return $laMatriz;
 	}
 	public function gestionar(){
     $resultado = array();
@@ -54,10 +51,14 @@ class  cls_Categoria extends Core{
         $resultado['success'] = $this->buscar();
         $resultado['categoria'] = $this->get();
         break;
-      case:'listar':
+      case 'listar':
 				$resultado['categorias'] = $this->listar();				
-				$resultado['success']=(count($resultado['categorias'])>0)
-        break;
+				$resultado['success']=(count($resultado['categorias'])>0);
+				break;
+			default:
+				$resultado['success']=false;
+				$resultado['mensaje']='operacion no seleccionada';
+				break;
     }
     return $resultado;
   }

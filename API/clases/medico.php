@@ -1,6 +1,6 @@
 <?php
-include_once("./core.php");
-class  cls_Medicos extends Core{
+include_once("/home2/larasalu/public_html/API/clases/core.php");
+class  cls_Medico extends Core{
   private $aa_Form;
 
   public function __construct(){
@@ -17,9 +17,9 @@ class  cls_Medicos extends Core{
 	
 	public function buscar(){							
     $lb_Enc=false;	    
-		$ls_Sql="SELECT * FROM medico WHERE titulo='".$this->aa_Form['titulo']."' LIMIT 1;";			
+		$lsSql="SELECT * FROM medico WHERE titulo='".$this->aa_Form['titulo']."' LIMIT 1;";			
 		$this->f_Con();	
-		$lr_Tabla=$this->f_Filtro($ls_Sql);				
+		$lr_Tabla=$this->f_Filtro($lsSql);				
 		if($la_Tupla=$this->f_Arreglo($lr_Tabla)){
 			$lb_Enc=true;
 		}				
@@ -31,16 +31,15 @@ class  cls_Medicos extends Core{
   public function listar(){
     $laMatriz=Array();							
 			$liI=1;		
-			$ls_Sql="SELECT id,nombre from medicos";
+			$lsSql="SELECT id,nombre from medicos";
 			$this->f_Con();
 			$lrTb=$this->f_Filtro($lsSql);				
 			While($laTupla=$this->f_Arreglo($lrTb)){	
 				$laMatriz [$liI] [0]= $laTupla ["id"];
 				$laMatriz [$liI] [1]= $laTupla ["nombre"];
 				$liI++;   
-			}					
-			$lrTb=$this->f_Filtro($lsSql);
-			$this->f_Cierra($lrTb);		
+			}
+			$this->f_Cierra($lrTb);
 			$this->f_Des();
 			return $laMatriz;			
   }
@@ -49,14 +48,13 @@ class  cls_Medicos extends Core{
 		{				
 			$laMatriz=Array();							
 			$liI=1;		
-			$ls_Sql="SELECT * FROM medicos join especialidad_medico on especialidad_medico.medico_id = medicos.id WHERE especialidad_id='".$this->aa_Form['especialidad_id']."' AND ciudad='".$this->aa_Form['ciudad']."';";
+			$lsSql="SELECT * FROM medicos join especialidad_medico on especialidad_medico.medico_id = medicos.id WHERE especialidad_id='".$this->aa_Form['especialidad_id']."' AND ciudad='".$this->aa_Form['ciudad']."';";
 			$this->f_Con();
 			$lrTb=$this->f_Filtro($lsSql);				
 			While($laTupla=$this->f_Arreglo($lrTb)){	
 				$laMatriz [$liI]= $laTupla;
 				$liI++;   
-			}					
-			$lrTb=$this->f_Filtro($lsSql);
+			}
 			$this->f_Cierra($lrTb);		
 			$this->f_Des();
 			return $laMatriz;							
@@ -69,14 +67,18 @@ class  cls_Medicos extends Core{
         $resultado['success'] = $this->buscar();
         $resultado['medico'] = $this->get();
         break;
-      case:'listar':
+      case 'listar':
 				$resultado['medicos'] = $this->listar();
-				$resultado['success']=(count($resultado['medicos'])>0)
+				$resultado['success']=(count($resultado['medicos'])>0);
         break;
-      case:'listarPorCiudad':
+      case 'listarPorCiudad':
 				$resultado['medicos'] = $this->listarPorCiudad();
-				$resultado['success']=(count($resultado['medicos'])>0)
-        break;
+				$resultado['success']=(count($resultado['medicos'])>0);
+				break;
+			default:
+				$resultado['success']=false;
+				$resultado['mensaje']='operacion no seleccionada';
+				break;
     }
     return $resultado;
   }

@@ -1,5 +1,5 @@
 <?php
-include_once("./core.php");
+include_once("/home2/larasalu/public_html/API/clases/core.php");
 class  cls_Directorio extends Core{
   private $aa_Form;
 
@@ -27,17 +27,22 @@ class  cls_Directorio extends Core{
         $resultado['success'] = $this->buscar();
         $resultado['directorio'] = $this->get();
         break;
-      case:'agregar':
+      case 'agregar':
         $resultado['success'] = $this->agregar();
         break;
-      case:'modificar':
-        $resultado['success'] = $this->modificar()
+      case 'modificar':
+        $resultado['success'] = $this->modificar();
         break;
-      case:'posicionar':
+      case 'posicionar':
         $resultado['directorios'] = $this->buscarPremium();
         break;
-      case:'enviarPos':
+      case 'enviarPos':
+      //TODO: por hacer
         break;
+      default:
+				$resultado['success']=false;
+				$resultado['mensaje']='operacion no seleccionada';
+				break;
     }
     return $resultado;
   }
@@ -48,9 +53,9 @@ class  cls_Directorio extends Core{
   }
 	public function buscar(){							
     $lb_Enc=false;	    
-		$ls_Sql="SELECT * FROM directorio WHERE nombre='".$this->aa_Form['nombre']."' AND tipo='".$this->aa_Form['tipo']."' LIMIT 1";
+		$lsSql="SELECT * FROM directorio WHERE nombre='".$this->aa_Form['nombre']."' AND tipo='".$this->aa_Form['tipo']."' LIMIT 1";
 		$this->f_Con();	
-		$lr_Tabla=$this->f_Filtro($ls_Sql);				
+		$lr_Tabla=$this->f_Filtro($lsSql);				
 		if($la_Tupla=$this->f_Arreglo($lr_Tabla)){
 			$this->asignar();
 			$lb_Enc=true;
@@ -64,14 +69,13 @@ class  cls_Directorio extends Core{
     			
     $laMatriz=Array();							
     $liI=1;		
-    $ls_Sql="SELECT * FROM directorio WHERE premium='1' AND tipo='".$this->aa_Form['tipo']."'";
+    $lsSql="SELECT * FROM directorio WHERE premium='1' AND tipo='".$this->aa_Form['tipo']."'";
     $this->f_Con();
     $lrTb=$this->f_Filtro($lsSql);				
     While($laTupla=$this->f_Arreglo($lrTb)){	
       $laMatriz [$liI] = $laTupla;
       $liI++;   
-    }					
-    $lrTb=$this->f_Filtro($lsSql);
+    }
     $this->f_Cierra($lrTb);		
     $this->f_Des();
     return $laMatriz;
@@ -90,11 +94,12 @@ class  cls_Directorio extends Core{
       $success = false;
       $mensaje = "¡No se logro subir el logo, por favor intente de nuevo!";
     }
-    return new Array(
+    $result = array(
       'success' => $success,
       'mensaje' => $mensaje,
       'logo'    => $logo_subido
     );
+    return $result;
   }
   public function modificar(){
     $lb_Hecho =  false;
@@ -133,8 +138,8 @@ class  cls_Directorio extends Core{
       {
         $result['mensaje'].="Directorio modificado exitosamente";
       }
-      return $result
-    }      
+      return $result;
+    }
   }
   public function agregar(){
     $lb_Enc = $this->buscar();
@@ -173,28 +178,5 @@ class  cls_Directorio extends Core{
       return $result;
     }
   }
-  // public function f_Operacion(){						
-	// 	$lb_Hecho=false;
-	// 	if($this->aa_Form['Operacion']=="incluir"){		
-	// 		$ls_Sql="INSERT INTO ambiente (codigo,nombre,direccion,estatus,borrado,tip_cod)";						
-	// 		$ls_Sql.="VALUES";							
-	// 		$ls_Sql.="('".$this->aa_Form['Codigo']."','".$this->aa_Form['Nombre']."',";
-	// 		$ls_Sql.="'".$this->aa_Form['Direccion']."','".$this->aa_Form['Estatus']."'";							
-	// 		$ls_Sql.=",'I','".$this->aa_Form['Tipo']."')";
-	// 	}else if($this->aa_Form['Operacion']=="modificar"){
-	// 		$ls_Sql="UPDATE ambiente SET nombre='".$this->aa_Form['Nombre']."',";	
-	// 		$ls_Sql.="direccion='".$this->aa_Form['Direccion']."', estatus='".$this->aa_Form['Estatus']."',";		
-	// 		$ls_Sql.="tip_cod='".$this->aa_Form['Tipo']."' ";
-	// 		$ls_Sql.=" WHERE(codigo='".$this->aa_Form['Codigo']."')";				
-	// 	}else if($this->aa_Form['Operacion']=="eliminar"){
-	// 		$ls_Sql="UPDATE ambiente SET borrado='A' WHERE(codigo='".$this->aa_Form['Codigo']."')";					
-	// 	}				
-	// 	if($this->f_Supervisar("Ambiente",$ls_Sql,"Usuario en session")){			
-	// 		$this->f_Con();
-	// 		$lb_Hecho=$this->f_Ejecutar($ls_Sql);		
-	// 		$this->f_Des();
-	// 	}				
-	// 	return $lb_Hecho;
-	// }										
 }
 ?>

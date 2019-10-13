@@ -1,5 +1,5 @@
 <?php
-include_once("./core.php");
+include_once("/home2/larasalu/public_html/API/clases/core.php");
 class  cls_Usuario extends Core{
   private $aa_Form;
 
@@ -18,9 +18,9 @@ class  cls_Usuario extends Core{
   public function logIn ()						
 		{				
       $lb_Enc=false;	    
-      $ls_Sql="SELECT * FROM usuarios WHERE usuario='Administrador'";			
+      $lsSql="SELECT * FROM usuarios WHERE usuario='Administrador'";			
       $this->f_Con();	
-      $lr_Tabla=$this->f_Filtro($ls_Sql);				
+      $lr_Tabla=$this->f_Filtro($lsSql);				
       if($la_Tupla=$this->f_Arreglo($lr_Tabla)){
         $lb_Enc=true;      
         if(isset($la_Tupla))
@@ -52,6 +52,13 @@ class  cls_Usuario extends Core{
       case 'logIn': 
         $resultado['success'] = $this->logIn();
         break;
+      case 'logOut': 
+        $resultado['success'] = $this->logIn();
+        break;
+      default:
+				$resultado['success']=false;
+				$resultado['mensaje']='operacion no seleccionada';
+				break;
     }
     return $resultado;
   }

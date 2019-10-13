@@ -1,5 +1,5 @@
 <?php
-include_once("./core.php");
+include_once("/home2/larasalu/public_html/API/clases/core.php");
 class  cls_Especialidad extends Core{
   private $aa_Form;
 
@@ -18,23 +18,21 @@ class  cls_Especialidad extends Core{
   
 
 	
-	public function listar()						
-		{				
-			$laMatriz=Array();							
-			$liI=1;		
-			$ls_Sql="SELECT * FROM especialidades WHERE profesional='".$this->aa_Form['busqueda']."'";
-			$this->f_Con();
-			$lrTb=$this->f_Filtro($lsSql);				
-			While($laTupla=$this->f_Arreglo($lrTb)){	
-				$laMatriz [$liI]= $laTupla;
-				$liI++;   
-			}					
-			$lrTb=$this->f_Filtro($lsSql);
-			$this->f_Cierra($lrTb);		
-			$this->f_Des();
-			return $laMatriz;							
-	}return $lb_Enc;	
+	public function listar(){				
+    $laMatriz=Array();							
+    $liI=1;		
+    $lsSql="SELECT * FROM especialidades WHERE profesional='".$this->aa_Form['busqueda']."'";
+    $this->f_Con();
+    $lrTb=$this->f_Filtro($lsSql);				
+    While($laTupla=$this->f_Arreglo($lrTb)){	
+      $laMatriz [$liI]= $laTupla;
+      $liI++;   
+    }
+    $this->f_Cierra($lrTb);		
+    $this->f_Des();
+    return $laMatriz;							
   }
+
   public function agregar(){
     $this->aa_Form['profesional']=($this->aa_Form['medicos']=="1")?"M":"O";
     $sql = $query = "INSERT INTO especialidades(especialidad,profesional) VALUES('".$this->aa_Form['especialidad']."','".$this->aa_Form['profesional']."')";
@@ -45,18 +43,17 @@ class  cls_Especialidad extends Core{
     
     return $result;
   }
-  public function listar()						
+  public function listarTodas()						
 		{				
 			$laMatriz=Array();							
 			$liI=1;		
-			$ls_Sql="SELECT * FROM especialidades";
+			$lsSql="SELECT * FROM especialidades";
 			$this->f_Con();
 			$lrTb=$this->f_Filtro($lsSql);				
 			While($laTupla=$this->f_Arreglo($lrTb)){	
 				$laMatriz [$liI] = $laTupla;
 				$liI++;   
-			}					
-			$lrTb=$this->f_Filtro($lsSql);
+			}
 			$this->f_Cierra($lrTb);		
 			$this->f_Des();
 			return $laMatriz;							
@@ -68,10 +65,18 @@ class  cls_Especialidad extends Core{
         $resultado['success'] = $this->buscar();
         $resultado['especialidad'] = $this->get();
         break;
-      case:'listar':
+      case 'listar':
         $resultado['especialidades'] = $this->listar();
-        $resultado['success']=(count($resultado['especialidades'])>0)
+        $resultado['success']=(count($resultado['especialidades'])>0);
         break;
+      case 'listarTodas':
+        $resultado['especialidades'] = $this->listarTodas();
+        $resultado['success']=(count($resultado['especialidades'])>0);
+        break;
+      default:
+				$resultado['success']=false;
+				$resultado['mensaje']='operacion no seleccionada';
+				break;
     }
     return $resultado;
   }

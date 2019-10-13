@@ -1,35 +1,59 @@
 <?php 
-include("../clases/cls_Actualizar.php");
+include("/home2/larasalu/public_html/API/clases/articulo.php");
+include("/home2/larasalu/public_html/API/clases/categoria.php");
+include("/home2/larasalu/public_html/API/clases/directorio.php");
+include("/home2/larasalu/public_html/API/clases/especialidad.php");
+include("/home2/larasalu/public_html/API/clases/medico.php");
 session_start();
-if(array_key_exists(Operacion,$_POST))
+
+//convierto el json de la peticion en un array asociativo para asi poder usar mas comodamente
+$data = json_decode(file_get_contents('php://input'), true);
+
+if(array_key_exists('operacion',$data))
 {
-	$laForm=$_POST;
-	$lobj_Actualizar= new cls_Actualizar();
-	$lobj_Actualizar->f_SetsForm($laForm);
+  $laForm=$data;
+  $clase = obtenerClase($data['modelo']);
+  unset($data['modelo']);
+  if($clase!=null){
+    $clase->f_SetsForm($laForm);
+    $result =  $clase->gestionar();
+  }else{
+    $result = array('success'=>false,'mensaje'=>'modelo seleccionado no existe');
+  } 
+  header("Content-Type: application/json");
+  $result = json_encode($result);
+  echo $result;
+}else if(array_key_exists(accesoPrueba,$_GET)){
+	header("Content-Type: application/json");
+	$result = json_encode(array('API'=>'laraSalud','version'=>'1'));
+	echo $result;
+}else{
+  header("Content-Type: application/json");
+	$result = json_encode(array('mensaje'=>'debe seleccionar una operacion'));
+	echo $result;
 }
-if($laForm['Operacion']!="buscar")
-{
-	$lb_Hecho=false;
-	if($laForm['Operacion']=="lista"){
-		$_SESSION['matriz']=$lobj_Actualizar->fListar(); //le mando la pagina como parametro para resivir el arreglo lleno 
-		$_SESSION["Campos"]=$laForm;
-		header("location: ../vistas/vis_Actualizar.php?buscar");
-	}
-	else if($laForm['Operacion']!="lista")
-	{
-		$lb_Hecho=$lobj_Actualizar->f_Operacion();
-		if($lb_Hecho)
-		{
-			unset($laForm);
-			$laForm['Mensaje']="Datos Actualizados Con Exito";
-			$_SESSION['usuario']["Mensaje"]=$laForm['Mensaje'];
-			header("location: ../vistas/vis_Inicio.php");
-		}else{
-			$laForm["Mensaje"]=$_SESSION['Mensaje'];
-			unset($_SESSION['Mensaje']);
-			$_SESSION['usuario']["Mensaje"]=$laForm['Mensaje'];
-			header("location: cor_PrimeraVez.php?Operacion=buscar");
-		}
-	}
+
+function obtenerClase($modelo){
+  switch($modelo){
+    case'articulo':
+      $clase = new cls_Articulo();
+      break;
+    case'categoria':
+      $clase = new cls_Categoria();
+      break;
+    case'medico':
+      $clase = new cls_Medico();
+      break;
+    case'directorio':
+      $clase = new cls_Directorio();
+      break;
+    case'especialidad':
+      $clase = new cls_Especialidad();
+      break;
+    case'usuario':
+      $clase = new cls_Usuario();
+      break;
+  }
+  return $clase;
 }
 ?>

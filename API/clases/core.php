@@ -8,48 +8,44 @@ class Core {
 		$ls_Usr="larasalu_admin";																						
 		$ls_Pass="conejototuga.1";																					
 		$ls_Bd="larasalu_directorio";																						
-		$this->ar_Con=mysqli_connect($ls_Serv,$ls_Usr,$ls_Pass) or die ('coneccion fallida'.mysql_error());	
-		mysql_select_db($ls_Bd,$this->ar_Con);																
-		mysql_query("SET NAMES utf8");																		
+		$this->ar_Con=mysqli_connect($ls_Serv,$ls_Usr,$ls_Pass) or die ('coneccion fallida'.mysqli_error());	
+		mysqli_select_db($this->ar_Con,$ls_Bd);																
+		mysqli_query($this->ar_Con,"SET NAMES utf8");																		
 	}																										
 	protected function f_Ejecutar($ps_Sql){									
 		$lb_Hecho=false;													
-		mysql_query($ps_Sql,$this->ar_Con);									
-		if(mysql_affected_rows($this->ar_Con)>0){							
+		mysqli_query($this->ar_Con,$ps_Sql);									
+		if(mysqli_affected_rows($this->ar_Con)>0){							
 			$lb_Hecho=true;													
 		}																	
 		return $lb_Hecho;													
 	}																		
 	protected function f_Filtro($ps_Sql){									
-		$lr_Tabla=mysql_query($ps_Sql,$this->ar_Con);						
+		$lr_Tabla=mysqli_query($this->ar_Con,$ps_Sql);						
 		return $lr_Tabla;													
 	}																		
 	protected function f_Arreglo($pr_Tabla){								
-		$la_Tupla=mysql_fetch_array($pr_Tabla);								
+		$la_Tupla=mysqli_fetch_array($pr_Tabla);								
 		return $la_Tupla;													
 	}																		
 	protected function f_Cierra($pr_Tabla){									
-		mysql_free_result($pr_Tabla);										
+		mysqli_free_result($pr_Tabla);										
 	}																		
 	protected function f_Des(){												
 		mysqli_close($this->ar_Con);											
 	}																		
 	protected function f_Begin(){											
-		mysql_query("BEGIN",$this->ar_Con);									
+		mysqli_query($this->ar_Con,"BEGIN");									
 	}																		
 	protected function f_Commit(){											
-		mysql_query("COMMIT",$this->ar_Con);								
+		mysqli_query($this->ar_Con,"COMMIT");								
 	}																		
 	protected function f_RollBack(){										
-		mysql_query("ROLLBACK",$this->ar_Con);								
+		mysqli_query($this->ar_Con,"ROLLBACK");								
 	}
-	protected function f_Registro($prTb)									
-    {																		  
- 	    $li_Registros=mysql_num_rows($prTb);								
- 	    return $li_Registros;												
-    }			
-
-  }									
-    
+	protected function f_Registro($prTb){
+		$li_Registros=mysqli_num_rows($prTb);
+		return $li_Registros;
+	}
 }
 ?>
