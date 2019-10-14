@@ -16,17 +16,26 @@ class  cls_Especialidad extends Core{
 		return $this->aa_Form;				
   }
   
-
+  public function buscar(){
+    $lsSql = "SELECT * FROM especialidades WHERE id ='".$this->aa_Form['id']."'";
+    $this->f_Con();	
+		$lr_Tabla=$this->f_Filtro($lsSql);				
+		if($la_Tupla=$this->f_Arreglo($lr_Tabla)){
+			$this->asignacion($la_Tupla);
+			$lb_Enc=true;
+		}				
+		$this->f_Cierra($lr_Tabla);						
+		$this->f_Des();	
+		return $lb_Enc;	
+  }
 	
 	public function listar(){				
-    $laMatriz=Array();							
-    $liI=1;		
+    $laMatriz=Array();
     $lsSql="SELECT * FROM especialidades WHERE profesional='".$this->aa_Form['busqueda']."'";
     $this->f_Con();
     $lrTb=$this->f_Filtro($lsSql);				
     While($laTupla=$this->f_Arreglo($lrTb)){	
-      $laMatriz [$liI]= $laTupla;
-      $liI++;   
+      array_push($laMatriz,$laTupla);
     }
     $this->f_Cierra($lrTb);		
     $this->f_Des();
@@ -45,14 +54,12 @@ class  cls_Especialidad extends Core{
   }
   public function listarTodas()						
 		{				
-			$laMatriz=Array();							
-			$liI=1;		
+			$laMatriz=Array();
 			$lsSql="SELECT * FROM especialidades";
 			$this->f_Con();
 			$lrTb=$this->f_Filtro($lsSql);				
-			While($laTupla=$this->f_Arreglo($lrTb)){	
-				$laMatriz [$liI] = $laTupla;
-				$liI++;   
+			While($laTupla=$this->f_Arreglo($lrTb)){
+        array_push($laMatriz,$laTupla);
 			}
 			$this->f_Cierra($lrTb);		
 			$this->f_Des();

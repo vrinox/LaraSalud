@@ -32,13 +32,11 @@ class  cls_Categoria extends Core{
   
   public function listar(){
 		$laMatriz=Array();
-		$liI=1;		
 		$lsSql="SELECT * FROM categorias";
 		$this->f_Con();
 		$lrTb=$this->f_Filtro($lsSql);				
 		While($laTupla=$this->f_Arreglo($lrTb)){	
-			$laMatriz [$liI] = $laTupla;
-			$liI++;   
+			array_push($laMatriz,$laTupla);
 		}
 		$this->f_Cierra($lrTb);
 		$this->f_Des();
@@ -61,11 +59,6 @@ class  cls_Categoria extends Core{
 				break;
     }
     return $resultado;
-  }
-  public function asignacion($externo){
-    foreach ($externo as $clave => $valor){
-      $this->aa_Form[$clave] = $valor; 
-    }
   }
 }
 ?>

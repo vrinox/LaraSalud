@@ -57,7 +57,7 @@ class  cls_Directorio extends Core{
 		$this->f_Con();	
 		$lr_Tabla=$this->f_Filtro($lsSql);				
 		if($la_Tupla=$this->f_Arreglo($lr_Tabla)){
-			$this->asignar();
+			$this->asignacion($la_Tupla);
 			$lb_Enc=true;
 		}				
 		$this->f_Cierra($lr_Tabla);						
@@ -66,15 +66,12 @@ class  cls_Directorio extends Core{
   }
 
   public function buscarPremium(){
-    			
-    $laMatriz=Array();							
-    $liI=1;		
+    $laMatriz=Array();
     $lsSql="SELECT * FROM directorio WHERE premium='1' AND tipo='".$this->aa_Form['tipo']."'";
     $this->f_Con();
     $lrTb=$this->f_Filtro($lsSql);				
-    While($laTupla=$this->f_Arreglo($lrTb)){	
-      $laMatriz [$liI] = $laTupla;
-      $liI++;   
+    While($laTupla=$this->f_Arreglo($lrTb)){
+      array_push($laMatriz,$laTupla);
     }
     $this->f_Cierra($lrTb);		
     $this->f_Des();

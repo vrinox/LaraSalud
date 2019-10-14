@@ -7,7 +7,8 @@ include("/home2/larasalu/public_html/API/clases/medico.php");
 session_start();
 
 //convierto el json de la peticion en un array asociativo para asi poder usar mas comodamente
-$data = json_decode(file_get_contents('php://input'), true);
+$json= file_get_contents('php://input');
+$data = json_decode($json, true);
 
 if(array_key_exists('operacion',$data))
 {

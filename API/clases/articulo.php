@@ -31,14 +31,11 @@ class  cls_Articulo extends Core{
   public function listar ()						
 		{				
 			$laMatriz=Array();							
-			$liI=1;		
 			$lsSql="SELECT id,nombre from articulos";
 			$this->f_Con();
 			$lrTb=$this->f_Filtro($lsSql);				
 			While($laTupla=$this->f_Arreglo($lrTb)){	
-				$laMatriz [$liI] [0]= $laTupla ["id"];
-				$laMatriz [$liI] [1]= $laTupla ["nombre"];
-				$liI++;   
+				array_push($laMatriz,$laTupla);
 			}
 			$this->f_Cierra($lrTb);		
 			$this->f_Des();

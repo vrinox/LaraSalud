@@ -21,6 +21,7 @@ class  cls_Medico extends Core{
 		$this->f_Con();	
 		$lr_Tabla=$this->f_Filtro($lsSql);				
 		if($la_Tupla=$this->f_Arreglo($lr_Tabla)){
+			$this->asignacion($la_Tupla);
 			$lb_Enc=true;
 		}				
 		$this->f_Cierra($lr_Tabla);						
@@ -34,10 +35,8 @@ class  cls_Medico extends Core{
 			$lsSql="SELECT id,nombre from medicos";
 			$this->f_Con();
 			$lrTb=$this->f_Filtro($lsSql);				
-			While($laTupla=$this->f_Arreglo($lrTb)){	
-				$laMatriz [$liI] [0]= $laTupla ["id"];
-				$laMatriz [$liI] [1]= $laTupla ["nombre"];
-				$liI++;   
+			While($laTupla=$this->f_Arreglo($lrTb)){
+				array_push($laMatriz,$laTupla);
 			}
 			$this->f_Cierra($lrTb);
 			$this->f_Des();
@@ -46,20 +45,24 @@ class  cls_Medico extends Core{
 
   public function listarPorCiudad ()						
 		{				
-			$laMatriz=Array();							
-			$liI=1;		
+			$laMatriz=Array();
 			$lsSql="SELECT * FROM medicos join especialidad_medico on especialidad_medico.medico_id = medicos.id WHERE especialidad_id='".$this->aa_Form['especialidad_id']."' AND ciudad='".$this->aa_Form['ciudad']."';";
 			$this->f_Con();
 			$lrTb=$this->f_Filtro($lsSql);				
-			While($laTupla=$this->f_Arreglo($lrTb)){	
-				$laMatriz [$liI]= $laTupla;
-				$liI++;   
+			While($laTupla=$this->f_Arreglo($lrTb)){
+				array_push($laMatriz,$laTupla);
 			}
 			$this->f_Cierra($lrTb);		
 			$this->f_Des();
 			return $laMatriz;							
   }
 
+  public function asignacion($externo){
+    foreach ($externo as $clave => $valor){
+      $this->aa_Form[$clave] = $valor; 
+    }
+	}
+	
   public function gestionar(){
     $resultado = array();
     switch($this->aa_Form['operacion']){
