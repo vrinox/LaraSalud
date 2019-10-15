@@ -11,7 +11,6 @@ class  cls_Directorio extends Core{
   public function f_SetsForm($pa_Form,$pa_Files){
     $this->aa_Form=$pa_Form;
     $this->aa_Form['nombre'] = strtoupper($this->aa_Form['nombre']);
-    $this->aa_Form['tipo'] = $this->aa_Form['directorio '];
     $this->aa_Files=$pa_Files;
     $this->aa_Form['dir_subida'] = "imagenes/logos/".$this->aa_Form['tipo']."/";
 	}		

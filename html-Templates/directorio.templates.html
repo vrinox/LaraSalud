@@ -1,0 +1,39 @@
+<template id="medico">
+  <div class="row p2" style="background-color: rgb(11,166,156);">
+    <div class="col-lg-8 col-sm-12 pt-1 pr-0">
+      <div class="">
+        <img class="p-2 float-left" src="../$imagen$" width="90px"
+          class="float-left mr-2">
+        <h3 style="color:white;" class="pt-3">$nombre$</h3>
+        <p class="p-small" style="color: black;">$descripcion$</p>
+      </div>
+      <div class="">
+        <p class="p-smaller" style="color: black;">$direccion$ Telefonos: $telefonos$</p>
+      </div>
+      <div class="">
+        <p class="p-smaller" style="color: black;">$horario$ Correo: $correo$</p>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-10 pr-0 pl-lg-0 ">
+      <iframe class="float-left borde3d mt-3"
+        src="$mapa$"
+        width="190" height="190" allowfullscreen> Blossom</iframe>
+    </div>
+    <div class="col-lg-1 col-sm-2 pl-lg-0 pt-sm-1">              
+      <a href='$facebook$'><img class="mt-lg-4 pt-lg-1 pl-lg-1 h-lg-25" src="../imagenes/iconos/sociales/face.png"></a>
+      <a href='$instagram$'><img class="pt-lg-1 pl-lg-1 h-lg-25" src="../imagenes/iconos/sociales/instagram.png"></a>
+      <a href='$linkedin$'><img class="pt-lg-1 pl-lg-1 h-lg-25" src="../imagenes/iconos/sociales/linkedin.png"></a>
+    </div>
+  </div>
+</template>
+<template id="clinica">
+  <div class="row p2 p-3 pl-4 rounded-sm d-flex mb-3" style="background-color: #e4e0e0;">
+    <div class="col-lg-6 col-sm-12">
+      <h4>$nombre$</h4>
+      <p class="mb-0" style="color: black;">$descripcion$</p>
+    </div>
+    <div class="col-lg-6 col-sm-12">
+      <p class="p-small" style="color: black;">$direccion$<br> Telefonos: $telefonos$</p>
+    </div>
+  </div>
+</template>

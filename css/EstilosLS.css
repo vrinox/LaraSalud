@@ -204,6 +204,14 @@ header.masthead {
   margin-left: 0.2rem !important; 
   margin-bottom: 1rem !important;
 }
+.p2{
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+}
 .vertical-menu {
   width: -webkit-calc(100% - 0.9rem);
   width: calc(100% - 0.9rem);
