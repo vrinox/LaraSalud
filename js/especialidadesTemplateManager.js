@@ -14,19 +14,28 @@ class Especialidades {
       })
   }
   buscarEspecialidades(tipo){
-    return new Promise((resolve,reject)=>{
       let json = {"modelo":"especialidad","operacion":"listar","busqueda":tipo}
-      console.log('[busqueda]empezo')
-      $.post('https://www.larasalud.com/API/',JSON.stringify(json))
-      .done((data)=>{
-        console.log('[busqueda]termino')
-        resolve(data.especialidades);
-      }).fail((err)=>{
-        console.log("[busqueda]fallo",err)
-        reject();
-      })
-    })
+      return this.post(json).then((data)=>{
+        return Promise.resolve(data.especialidades)
+      });
   }
+
+  post(json,headers = {}){
+    return new Promise((resolve,reject)=>{
+      $.ajax({
+        url: 'https://www.larasalud.com/API/',
+        type: 'post',
+        data: JSON.stringify(json),
+        crossDomain: true,
+        headers: {"Accept": "application/json"},
+        dataType: 'json',
+        success: function (data) {
+           resolve(data);
+        }
+      });
+    });
+  }
+
   cargarTemplatesExta(){  
     let baseTemplateUrl = '../html-Templates/'
     let link = document.querySelector('link[href="'+baseTemplateUrl+'medicos.templates.html"]')

@@ -34,6 +34,9 @@ class  cls_Directorio extends Core{
         break;
       case 'posicionar':
         $resultado['directorios'] = $this->buscarPremium();
+        break;  
+      case 'listarPorCiudad':
+        $resultado['directorios'] = $this->listarPorCiudad();
         break;
       case 'enviarPos':
       //TODO: por hacer
@@ -63,6 +66,20 @@ class  cls_Directorio extends Core{
 		$this->f_Des();	
 		return $lb_Enc;	
   }
+
+  public function listarPorCiudad ()						
+  {				
+    $laMatriz=Array();
+    $lsSql="SELECT * FROM directorio where tipo = '".$this->aa_Form['tipo']."' AND ciudad='".$this->aa_Form['ciudad']."';";
+    $this->f_Con();
+    $lrTb=$this->f_Filtro($lsSql);				
+    While($laTupla=$this->f_Arreglo($lrTb)){
+      array_push($laMatriz,$laTupla);
+    }
+    $this->f_Cierra($lrTb);		
+    $this->f_Des();
+    return $laMatriz;							
+}
 
   public function buscarPremium(){
     $laMatriz=Array();

@@ -10,6 +10,10 @@ session_start();
 $json= file_get_contents('php://input');
 $data = json_decode($json, true);
 
+
+
+
+
 if(array_key_exists('operacion',$data))
 {
   $laForm=$data;
@@ -21,18 +25,18 @@ if(array_key_exists('operacion',$data))
   }else{
     $result = array('success'=>false,'mensaje'=>'modelo seleccionado no existe');
   } 
-  header("Content-Type: application/json");
   $result = json_encode($result);
-  echo $result;
 }else if(array_key_exists(accesoPrueba,$_GET)){
-	header("Content-Type: application/json");
-	$result = json_encode(array('API'=>'laraSalud','version'=>'1'));
-	echo $result;
+  $result= array('mesaje'=>'larasalud');
 }else{
-  header("Content-Type: application/json");
 	$result = json_encode(array('mensaje'=>'debe seleccionar una operacion'));
-	echo $result;
 }
+
+header("Content-Type: application/json");
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Authorization, Origin, X-Requested-With, Content-Type, Accept");
+echo $result;
 
 function obtenerClase($modelo){
   switch($modelo){
