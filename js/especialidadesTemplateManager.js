@@ -14,10 +14,10 @@ class Especialidades {
       })
   }
   buscarEspecialidades(tipo){
-      let json = {"modelo":"especialidad","operacion":"listar","busqueda":tipo}
-      return this.post(json).then((data)=>{
-        return Promise.resolve(data.especialidades)
-      });
+    let json = {"modelo":"especialidad","operacion":"listar","busqueda":tipo}
+    return this.post(json).then((data)=>{
+      return Promise.resolve(data.especialidades)
+    });
   }
 
   post(json,headers = {}){

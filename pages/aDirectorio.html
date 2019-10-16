@@ -2,10 +2,11 @@
 <html lang="es">
 
 <head>
+  <meta charset="utf-8">
   <link rel="import" href="../html-Templates/metaAdds.html">
   <link rel="import" href="../html-Templates/cssAddsGeneral.html">
   <!-- templates -->
-  <link rel="import" href="../html-Templates/adminHeader">
+  <link rel="import" href="../html-Templates/adminHeader.html">
   <link rel="import" href="../html-Templates/adminFooter.html">
   <script src="https://cdn.tiny.cloud/1/bylnd8nuvi8ba0uw0un57vcprn5jyyxbd1so3v7keff4rkgb/tinymce/5/tinymce.min.js"
     referrerpolicy="origin"></script>
@@ -16,10 +17,10 @@
 
 <body id="page-top">
 
-  <div id="headerAdminContainer"></div>
+  <div id="adminHeaderContainer"></div>
 
   <!-- Begin Page Content -->
-  <div class="container-fluid">
+  <div class="container-fluid pl-5 pr-5">
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -120,48 +121,50 @@
         <label for="mapa">Mapa Google</label>
         <input type="text" class="form-control" id="mapa" name="mapaD">
       </div>
-
-  </div>
-  <div class="form-group">
-    <label for="horario">Horario</label>
-    <input type="text" class="form-control" id="horario" name="horarioD"
-      placeholder=" ej. Atención Presencial: Martes, Jueves y Viernes (2pm a 6pm) Atención Online: Lunes a Viernes (8pm a 10pm) hora de Venezuela">
-  </div>
-  <div class="form-group w-50">
-    <label for="correo">Correo</label>
-    <input type="email" class="form-control" id="correo" name="correoD" placeholder=" ej. psicologoeduard@gmail.com">
-  </div>
-  <div class="form-group w-75">
-    <label for="facebook">Facebook</label>
-    <input type="text" class="form-control" id="facebook" name="facebookD">
-  </div>
-  <div class="form-group w-75">
-    <label for="linkedin">LinkedIn</label>
-    <input type="text" class="form-control" id="linkedin" name="linkedinD">
-  </div>
-  <div class="row">
-    <div class="col-sm-9">
-      <div class="form-group w-93">
-        <label for="instagram">Instagram</label>
-        <input type="text" class="form-control" id="instagram" name="instagramD">
+      <div class="form-group">
+        <label for="horario">Horario</label>
+        <input type="text" class="form-control" id="horario" name="horarioD"
+          placeholder=" ej. Atención Presencial: Martes, Jueves y Viernes (2pm a 6pm) Atención Online: Lunes a Viernes (8pm a 10pm) hora de Venezuela">
       </div>
-    </div>
-    <div class="col-sm-1 pt-4">
-      <button type="submit" name="agregarDirectorio" class="btn mb-2" style="background-color: rgb(255,255,153)"><i
-          class="fa fa-xs fa-plus" aria-hidden="true"></i>
-      </button>
-    </div>
-    <div class="col-sm-1 pt-4">
-      <button type="submit" name="modificarDirectorio" class="btn mb-2" style="background-color: rgb(255,255,153)"><i
-          class="fa fa-xs fa-edit" aria-hidden="true"></i>
-      </button>
-    </div>
-    <div class="col-sm-1 pt-4">
-      <button type="button" class="btn mb-2" style="background-color: rgb(255,255,153)" data-toggle="modal"
-        data-target="#modal"><i class="fa fa-xs fa-trash" aria-hidden="true"></i>
-      </button>
-    </div>
+      <div class="form-group w-50">
+        <label for="correo">Correo</label>
+        <input type="email" class="form-control" id="correo" name="correoD"
+          placeholder=" ej. psicologoeduard@gmail.com">
+      </div>
+      <div class="form-group w-75">
+        <label for="facebook">Facebook</label>
+        <input type="text" class="form-control" id="facebook" name="facebookD">
+      </div>
+      <div class="form-group w-75">
+        <label for="linkedin">LinkedIn</label>
+        <input type="text" class="form-control" id="linkedin" name="linkedinD">
+      </div>
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="form-group w-93">
+            <label for="instagram">Instagram</label>
+            <input type="text" class="form-control" id="instagram" name="instagramD">
+          </div>
+        </div>
+        <div class="col-sm-1 pt-4">
+          <button type="submit" name="agregarDirectorio" class="btn mb-2" style="background-color: rgb(255,255,153)"><i
+              class="fa fa-xs fa-plus" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="col-sm-1 pt-4">
+          <button type="submit" name="modificarDirectorio" class="btn mb-2"
+            style="background-color: rgb(255,255,153)"><i class="fa fa-xs fa-edit" aria-hidden="true"></i>
+          </button>
+        </div>
+        <div class="col-sm-1 pt-4">
+          <button type="button" class="btn mb-2" style="background-color: rgb(255,255,153)" data-toggle="modal"
+            data-target="#modal"><i class="fa fa-xs fa-trash" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
   </div>
+
+
   <input type="hidden" name="idActual" />
   <input type="hidden" name="nombreActual" />
   <input type="hidden" name="tipoPos" id="tipoPos" />
@@ -205,7 +208,7 @@
         </div>
         <div class="modal-body">
           Esta seguro(a) que desea eliminar el directorio:
-        <!-- aqui estaba nombreB -->
+          <!-- aqui estaba nombreB -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -216,7 +219,8 @@
   </div>
 
 
-  <div id="footerAdminContainer"></div>
+
+  <div id="adminFooterContainer"></div>
   </div>
   <link rel="import" href="../html-Templates/scriptsAdd.html">
   <script src="../js/cargaStandardAdmin.js"></script>

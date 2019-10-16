@@ -14,13 +14,6 @@ tinymce.init({
     '//www.tiny.cloud/css/codepen.min.css'
   ]
 });
-function verificarSesion(){
-  console.log('reviso');
-  let arreglo = location.pathname.split('/');  
-  if((!window.sessionStorage.larasalud)&&(arreglo[arreglo.length -1 ].toLowerCase() != "adminlogin.html")){
-    location.href = 'adminlogin.html';
-  }
-}
 $(function () {
   $('#sortable-8').sortable({
     update: function (event, ui) {
@@ -108,21 +101,6 @@ function espmodif(id) {
         console.log("complete" + valor2 + idModalesp + espm);
       });
   }
-  function post(json,headers = {}){
-    return new Promise((resolve,reject)=>{
-      $.ajax({
-        url: 'https://www.larasalud.com/API/',
-        type: 'post',
-        data: JSON.stringify(json),
-        crossDomain: true,
-        headers: {"Accept": "application/json"},
-        dataType: 'json',
-        success: function (data) {
-           resolve(data);
-        }
-      });
-    });
-  }
 }
 function cerrarSesion(){
   let json = {
@@ -135,4 +113,27 @@ function cerrarSesion(){
       location.href = 'adminLogin.html'
     }
   })
+}
+ 
+function verificarSesion(){
+  let arreglo = location.pathname.split('/');  
+  if((!window.sessionStorage.larasalud)&&(arreglo[arreglo.length -1 ].toLowerCase() != "adminlogin.html")){
+    location.href = 'adminlogin.html';
+  }
+}
+
+function post(json,headers = {}){
+  return new Promise((resolve,reject)=>{
+    $.ajax({
+      url: 'https://www.larasalud.com/API/',
+      type: 'post',
+      data: JSON.stringify(json),
+      crossDomain: true,
+      headers: {"Accept": "application/json"},
+      dataType: 'json',
+      success: function (data) {
+         resolve(data);
+      }
+    });
+  });
 }

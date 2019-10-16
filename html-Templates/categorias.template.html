@@ -1,0 +1,59 @@
+<template id="elementoLista">
+  <tr>
+    <td>$catactual$</td>
+    <td class="text-center"><button type="button" class="btn btn-info" data-toggle="modal"
+        data-target="#edit$idactual$"><i class="fa fa-xs fa-edit" aria-hidden="true"></i>
+      </button>
+      <div class="modal fade" id="edit$idactual$" tabindex="-1" role="dialog" aria-labelledby="editLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editLabel">Modificar la categoría: $catactual$</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="cat-modificada" class="col-form-label">Nueva Categoría:</label>
+                  <input type="text" class="form-control" id="cat-modificada$idactual$" name="catmod">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" id="catmodificar" class="btn btn-info"
+                onclick="catmodif($idactual$)">Modificar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td class="text-center"><button type="button" class="btn btn-info" data-toggle="modal"
+        data-target="#modal$idactual$"><i class="fa fa-xs fa-trash" aria-hidden="true"></i>
+      </button>
+      <div class="modal fade" id="modal$idactual$" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Advertencia!</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Esta seguro(a) que desea eliminar la especialidad: $catactual$
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <a class="btn btn-info" onclick="borrar($idactual$)" data-dismiss="modal" >Continuar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</template>

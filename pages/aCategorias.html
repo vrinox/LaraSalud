@@ -2,11 +2,13 @@
 <html lang="es">
 
 <head>
+  <meta charset="utf-8">
   <link rel="import" href="../html-Templates/metaAdds.html">
   <link rel="import" href="../html-Templates/cssAddsGeneral.html">
   <!-- templates -->
   <link rel="import" href="../html-Templates/adminHeader.html">
   <link rel="import" href="../html-Templates/adminFooter.html">
+  <link rel="import" href="../html-Templates/categorias.template.html">
   <script src="https://cdn.tiny.cloud/1/bylnd8nuvi8ba0uw0un57vcprn5jyyxbd1so3v7keff4rkgb/tinymce/5/tinymce.min.js"
     referrerpolicy="origin"></script>
   <title>LS Admin - Categorias</title>
@@ -14,12 +16,12 @@
 
 <!--Portada y navegacion-->
 
-<body id="page-top">
+<body id="page-top" class="">
 
   <div id="adminHeaderContainer"></div>
 
   <!-- Begin Page Content -->
-  <div class="container-fluid">
+  <div class="container-fluid ">
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -29,32 +31,38 @@
     <form method="POST">
       <div class="form-group">
         <label for="exampleFormControlInput1">Categoría</label>
-        <input type="input" class="form-control" id="exampleFormControlInput1" name="categoria"
-          placeholder="ej. Psicología">
+        <input type="input" class="form-control"  name="categoria" id="nombre"  placeholder="ej. Psicología">
       </div>
       
-      <button type="submit" name="agregar" class="btn mb-2" style="background-color: rgb(255,255,153)"><i
-          class="fa fa-xs fa-plus" aria-hidden="true"></i></button>
-      <button type="submit" name="buscar" class="btn mb-2" style="background-color: rgb(255,255,153)"><i
-          class="fa fa-xs fa-search" aria-hidden="true"></i></button>
+      <button type="button"id="agregar" name="agregar" class="btn mb-2" style="background-color: rgb(255,255,153)">
+        <i class="fa fa-xs fa-plus" aria-hidden="true"></i>Agregar
+      </button>
+      <button type="button"  id="buscar" name="buscar" class="btn mb-2" style="background-color: rgb(255,255,153)">
+        <i class="fa fa-xs fa-search" aria-hidden="true"></i>Buscar
+      </button>
     </form>
 
     <!-- Content Row -->
     <div class="row">
       <!-- Formulario de especialidades-->
-      <table id="busqueda" class="ml-5 mr-5 mt-2" width="40%">
-        <tr>
-          <th width="82%">Categorias</th>
-          <th width="9%">Modificar</th>
-          <th width="9%">Eliminar</th>
-        </tr>
-       <div id="listaContainer"></div>
+      <table id="busqueda" class="contanier mb-5 mt-2" width="40%">
+        <thead>
+            <tr>
+              <th width="82%">Categorias</th>
+              <th width="9%">Modificar</th>
+              <th width="9%">Eliminar</th>
+            </tr>
+        </thead>
+       <tbody id="listaContainer">
+
+       </tbody>
       </table>
     </div>
     <div id="adminFooterContainer"></div>
   </div>
   <link rel="import" href="../html-Templates/scriptsAdd.html">
   <script src="../js/cargaStandardAdmin.js"></script>
+  <script src="../js/aCategorias.js"></script>
 </body>
 
 </html>
