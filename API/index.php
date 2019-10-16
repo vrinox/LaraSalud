@@ -4,14 +4,12 @@ include("/home2/larasalu/public_html/API/clases/categoria.php");
 include("/home2/larasalu/public_html/API/clases/directorio.php");
 include("/home2/larasalu/public_html/API/clases/especialidad.php");
 include("/home2/larasalu/public_html/API/clases/medico.php");
+include("/home2/larasalu/public_html/API/clases/usuario.php");
 session_start();
 
 //convierto el json de la peticion en un array asociativo para asi poder usar mas comodamente
 $json= file_get_contents('php://input');
 $data = json_decode($json, true);
-
-
-
 
 
 if(array_key_exists('operacion',$data))
@@ -33,9 +31,11 @@ if(array_key_exists('operacion',$data))
 }
 
 header("Content-Type: application/json");
+// manejo de CORS
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
 header("Access-Control-Allow-Headers: Authorization, Origin, X-Requested-With, Content-Type, Accept");
+// fin cabeceras CORS
 echo $result;
 
 function obtenerClase($modelo){

@@ -29,31 +29,28 @@ class  cls_Usuario extends Core{
           if($clave==$la_Tupla['clave'])
           {
               $_SESSION['usuario'] = "Administrador";
-              if($this->aa_Form['permanecerIniciada']=='1')
-              {                    
-                setcookie("usuario",$_SESSION['usuario'], time()+60*60*24*365);
-              }
               $resultado['success'] = true;
           }
           else if($this->aa_Form['clave']!="" && $this->aa_Form['clave']!="Escribe la contraseña")
           {
               $resultado['success']= false;
-              $resultado['success']= "Contraseña Incorrecta!";
+              $resultado['mensaje']= "Contraseña Incorrecta!";
           }
         }				
       }      
       $this->f_Cierra($lr_Tabla);						
-      $this->f_Des();	
+      $this->f_Des();
+      return $resultado;
   }
 	
 	public function gestionar(){
     $resultado = array();
     switch($this->aa_Form['operacion']){
-      case 'logIn': 
-        $resultado['success'] = $this->logIn();
+      case 'login': 
+        $resultado = $this->logIn();
         break;
-      case 'logOut': 
-        $resultado['success'] = $this->logIn();
+      case 'logout': 
+        $resultado = $this->logOut();
         break;
       default:
 				$resultado['success']=false;
@@ -67,13 +64,10 @@ class  cls_Usuario extends Core{
      session_unset();
      // Borra todas las variables de sesión 
       $_SESSION = array(); 
-      // Borra la cookie que almacena la sesión 
-      if(isset($_COOKIE[session_name()])) { 
-          setcookie('usuario', '', 1); 
-      } 
       // Finalmente, destruye la sesión 
       session_destroy(); 
-      return true;
+      $resultado = array("success"=>true);
+      return $resultado;
   }
 }
 ?>
