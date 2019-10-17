@@ -8,6 +8,7 @@
   <!-- templates -->
   <link rel="import" href="../html-Templates/adminHeader.html">
   <link rel="import" href="../html-Templates/adminFooter.html">
+  <link rel="import" href="../html-Templates/directorio.templates.html">
   <script src="https://cdn.tiny.cloud/1/bylnd8nuvi8ba0uw0un57vcprn5jyyxbd1so3v7keff4rkgb/tinymce/5/tinymce.min.js"
     referrerpolicy="origin"></script>
   <title>LS Admin - Directorio</title>
@@ -27,12 +28,13 @@
       <h1 class="h3 mb-0 text-gray-800">Gestionar Directorio</h1>
     </div>
 
-    <form enctype="multipart/form-data" action="a-directorio.php" method="POST">
+    <form enctype="multipart/form-data" method="POST" id="form">
+      <input type="hidden" name="id" id="id" />
       <!-- Tipo de directorio ------->
       <div class="row">
         <div class="form-group col-sm-4 mt-2">
           <label for="tipodirectorio">Seleccionar directorio</label>
-          <select name="directorio" class="form-control" id="tipodirectorio">
+          <select name="tipo" class="form-control" id="tipodirectorio">
             <option value="Ambulancias">Ambulancia</option>
             <option value="Clinicas">Clinica</option>
             <option value="Enfermeras">Enfermera</option>
@@ -49,30 +51,30 @@
             </div>-->
           <div class="form-group">
             <label for="exampleFormControlFile1">Seleccionar logo</label>
-            <div><input name="logoD" type="file" class="form-control-file" id="exampleFormControlFile1"
+            <div><input name="logo" type="file" class="form-control-file" id="logo"
                 accept="image/*" /> </div>
           </div>
         </div>
         <!--- checkbox que pregunta si es premium o no --->
         <div class="col-sm-3" style="padding-top:2.5rem">
           <div class="custom-control custom-checkbox pl-5">
-            <input type="checkbox" class="custom-control-input" id="customCheck1" name="premiumD" value="1">
+            <input type="checkbox" class="custom-control-input" id="customCheck1" name="premium" value="1">
             <label class="custom-control-label" for="customCheck1">Premium</label>
           </div>
         </div>
       </div>
       <!--- persona o empresa del directorio --->
       <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-11">
           <div class="form-group">
             <label for="titulo" id="direct"></label>
-            <input type="text" class="form-control" id="titulo" name="nombreD"
-              placeholder="ej. Psicologo Eduard Guerrero">
+            <input type="text" class="form-control" id="titulo" name="nombre"
+              placeholder="ej. Psicologo Eduard Guerrero" required>
           </div>
         </div>
-        <div class="col-sm-3 pt-4">
-          <button type="submit" name="buscarDirectorio" class="btn mb-2" style="background-color: rgb(255,255,153)"><i
-              class="fa fa-xs fa-search" aria-hidden="true"></i>
+        <div class="col-sm-1 pt-4">
+          <button type="button" id="buscar"  name="buscarDirectorio" class="btn mb-2"
+            style="background-color: rgb(255,255,153)"><i class="fa fa-xs fa-search" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -80,15 +82,15 @@
         <div class="col-sm-7">
           <div class="form-group">
             <label for="descripcion">Descripción</label>
-            <input type="text" class="form-control" id="descripcion" name="descripcionD"
-              placeholder=" ej. Especialista en cognitivo conductual,terapia de parejas.">
+            <input type="text" class="form-control" id="descripcion" name="descripcion"
+              placeholder=" ej. Especialista en cognitivo conductual,terapia de parejas." required>
           </div>
         </div>
         <div class="col-sm-5">
           <div class="form-group">
             <label for="telefono">Telefonos</label>
-            <input type="tel" class="form-control" id="telefono" name="telefonoD"
-              placeholder=" ej. 0251-6350113 / 0414-0714813">
+            <input type="tel" class="form-control" id="telefono" name="telefono"
+              placeholder=" ej. 0251-6350113 / 0414-0714813" required>
           </div>
         </div>
       </div>
@@ -96,14 +98,14 @@
         <div class="col-sm-9">
           <div class="form-group">
             <label for="direccion">Dirección</label>
-            <input type="text" class="form-control" id="direccion" name="direccionD"
-              placeholder=" ej. Avenida 1 entre Calle 7 y 8 casa Número 7-20, Centro Médico Los Pinos. Urb. La Mata">
+            <input type="text" class="form-control" id="direccion" name="direccion"
+              placeholder=" ej. Avenida 1 entre Calle 7 y 8 casa Número 7-20, Centro Médico Los Pinos. Urb. La Mata" required>
           </div>
         </div>
         <div class="col-sm-3">
           <div class="form-group">
             <label for="city">Ciudad</label>
-            <select name="ciudadD" class="form-control" id="city">
+            <select name="ciudad" class="form-control" id="city" required>
               <option value="Barquisimeto">Barquisimeto</option>
               <option value="Cabudare">Cabudare</option>
               <option value="Carora">Carora</option>
@@ -119,84 +121,86 @@
       </div>
       <div class="form-group">
         <label for="mapa">Mapa Google</label>
-        <input type="text" class="form-control" id="mapa" name="mapaD">
+        <input type="text" class="form-control" id="mapa" name="mapa" required>
       </div>
       <div class="form-group">
         <label for="horario">Horario</label>
-        <input type="text" class="form-control" id="horario" name="horarioD"
+        <input type="text" class="form-control" id="horario" name="horario" required
           placeholder=" ej. Atención Presencial: Martes, Jueves y Viernes (2pm a 6pm) Atención Online: Lunes a Viernes (8pm a 10pm) hora de Venezuela">
       </div>
-      <div class="form-group w-50">
-        <label for="correo">Correo</label>
-        <input type="email" class="form-control" id="correo" name="correoD"
-          placeholder=" ej. psicologoeduard@gmail.com">
-      </div>
-      <div class="form-group w-75">
-        <label for="facebook">Facebook</label>
-        <input type="text" class="form-control" id="facebook" name="facebookD">
-      </div>
-      <div class="form-group w-75">
-        <label for="linkedin">LinkedIn</label>
-        <input type="text" class="form-control" id="linkedin" name="linkedinD">
-      </div>
+
       <div class="row">
-        <div class="col-sm-9">
-          <div class="form-group w-93">
-            <label for="instagram">Instagram</label>
-            <input type="text" class="form-control" id="instagram" name="instagramD">
-          </div>
+        <div class="form-group col-lg-4 col-md-2 col-sm">
+          <label for="correo">Correo</label>
+          <input type="email" class="form-control" id="correo" name="correo" required
+            placeholder=" ej. psicologoeduard@gmail.com">
         </div>
-        <div class="col-sm-1 pt-4">
-          <button type="submit" name="agregarDirectorio" class="btn mb-2" style="background-color: rgb(255,255,153)"><i
-              class="fa fa-xs fa-plus" aria-hidden="true"></i>
+        <div class="form-group col-lg-4 col-md-2 col-sm">
+          <label for="facebook">Facebook</label>
+          <input type="text" class="form-control" id="facebook" name="facebook">
+        </div>
+        <div class="form-group col-lg-4 col-md-2 col-sm">
+          <label for="linkedin">LinkedIn</label>
+          <input type="text" class="form-control" id="linkedin" name="linkedin">
+        </div>
+        <div class="form-group col-lg-8 col-md-2 col-sm">
+          <label for="instagram">Instagram</label>
+          <input type="text" class="form-control" id="instagram" name="instagram">
+        </div>
+        <div class="col-sm-4 col-lg-1 pt-4">
+          <button type="button"onclick="agregar()" name="agregarDirectorio" class="btn mb-2" style="background-color: rgb(255,255,153)">
+            <i class="fa fa-xs fa-plus" aria-hidden="true"></i>Agregar
           </button>
         </div>
-        <div class="col-sm-1 pt-4">
-          <button type="submit" name="modificarDirectorio" class="btn mb-2"
-            style="background-color: rgb(255,255,153)"><i class="fa fa-xs fa-edit" aria-hidden="true"></i>
+        <div class="col-sm-4 col-lg-1 pt-4">
+          <button type="button" onclick="modificar()" name="modificarDirectorio" class="btn mb-2" style="background-color: rgb(255,255,153)">
+            <i class="fa fa-xs fa-edit" aria-hidden="true"></i>Modificar
           </button>
         </div>
-        <div class="col-sm-1 pt-4">
-          <button type="button" class="btn mb-2" style="background-color: rgb(255,255,153)" data-toggle="modal"
-            data-target="#modal"><i class="fa fa-xs fa-trash" aria-hidden="true"></i>
+        <div class="col-sm-4 col-lg-1 pt-4">
+          <button type="button" class="btn mb-2" style="background-color: rgb(255,255,153)" data-toggle="modal" data-target="#modal">
+            <i class="fa fa-xs fa-trash" aria-hidden="true"></i>Borrar
+          </button>
+        </div>
+        <div class="col-sm-4 col-lg-1 pt-4">
+          <button type="button" class="btn mb-2" style="background-color: rgb(255,255,153)" onclick="limpiar()">
+            <i class="fa fa-xs fa-broom" aria-hidden="true"></i>Limpiar
           </button>
         </div>
       </div>
   </div>
-
-
-  <input type="hidden" name="idActual" />
   <input type="hidden" name="nombreActual" />
   <input type="hidden" name="tipoPos" id="tipoPos" />
-  <input type="hidden" name="posicionesD" id="posicionesD" value="" />
-  <h3>Posiciones Premium</h3>
-  <div class="row">
-    <div class="form-group col-sm-4 mt-2">
-      <label for="tipodirectorio">Seleccionar directorio</label>
-      <select name="posdirectorio" class="form-control" id="tipodirectorio">
-        <option value="Ambulancias">Ambulancia</option>
-        <option value="Clinicas">Clinica</option>
-        <option value="Enfermeras">Enfermera</option>
-        <option value="Farmacias">Farmacia</option>
-        <option value="Laboratorios">Laboratorio</option>
-        <option value="Suministros">Suministro</option>
-      </select>
-    </div>
-    <div class="col-sm-3" style="padding-top:2.5rem">
-      <button type="submit" name="posicionDirectorio" class="btn mb-2" style="background-color: rgb(255,255,153)"><i
-          class="fa fa-xs fa-retweet" aria-hidden="true"></i>
-      </button>
-      <button type="submit" id="enviarPos" class="btn btn-info" name="enviarPos">Cambiar Posiciones</button>
-    </div>
-  </div>
-  </div>
-  <ul id="sortable-8">
+  <input type="hidden" name="posiciones" id="posicionesD" value="" />
 
-  </ul>
+  <div class="container">
+    <h3>Posiciones Premium</h3>
+    <div class="row">
+      <div class="form-group col-sm-4 mt-2">
+        <label for="tipodirectorio">Seleccionar directorio</label>
+        <select name="posdirectorio" class="form-control" id="tipodirectorio" onchange="buscarDirectorios(this.value)">
+          <option value="Ambulancias">Ambulancia</option>
+          <option value="Clinicas">Clinica</option>
+          <option value="Enfermeras">Enfermera</option>
+          <option value="Farmacias">Farmacia</option>
+          <option value="Laboratorios">Laboratorio</option>
+          <option value="Suministros">Suministro</option>
+        </select>
+      </div>
+      <div class="col-sm-3" style="padding-top:2.5rem">
+        <button type="button" onclick="posicionar()" name="posicionDirectorio" class="btn mb-2"
+          style="background-color: rgb(255,255,153)"><i class="fa fa-xs fa-retweet" aria-hidden="true"></i>
+        </button>
+        <button type="submit" id="enviarPos" class="btn btn-info" name="enviarPos">Cambiar Posiciones</button>
+      </div>
+      <!-- lista  -->
+      <ul id="sortable-8"></ul>
+    </div>
+  </div>
+
   <br>
   <h3><span id="sortable-9"></span></h3>
 
-  </div>
   <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -212,7 +216,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <a class="btn btn-info" href="php/borrar.php?id=<?echo $id; ?>&tabla=directorio&fila=id">Continuar</a>
+          <a class="btn btn-info" onclick="borrar()" data-dismiss="modal" id="borrar">Continuar</a>
         </div>
       </div>
     </div>
@@ -221,9 +225,9 @@
 
 
   <div id="adminFooterContainer"></div>
-  </div>
   <link rel="import" href="../html-Templates/scriptsAdd.html">
   <script src="../js/cargaStandardAdmin.js"></script>
+  <script src="../js/aDirectorio.js"></script>
 </body>
 
 </html>

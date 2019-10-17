@@ -26,6 +26,7 @@ function login(){
     post(json).then((data)=>{
       if(data.success){
         window.sessionStorage.larasalud = "Administrador";
+        location.href = 'admin.html';
       }else{
         alert(data.mensaje);
       }

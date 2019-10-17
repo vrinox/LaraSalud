@@ -2,8 +2,11 @@
 <html lang="es">
 
 <head>
-  <link href="../html-Templates/cssAdds.html" rel="import" />
-  <link href="../html-Templates/metaAdds.html" rel="import" />
+  <link rel="import" href="../html-Templates/metaAdds.html">
+  <link rel="import" href="../html-Templates/cssAddsGeneral.html">
+  <!-- templates -->
+  <link rel="import" href="../html-Templates/adminHeader.html">
+  <link rel="import" href="../html-Templates/adminFooter.html">
   <title>LS Admin - Inicio</title>
 </head>
 
@@ -11,7 +14,7 @@
   <!-- Page Wrapper -->
   <div id="wrapper">
     <!-- Sidebarr -->
-    <link rel="import" href="sidebar.html">
+    <link rel="import" href="../html-Templates/sidebar.html">
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -117,7 +120,7 @@
           <div class="row">
 
             <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
+            <div class="col-xl-8 col-lg-7 col-sm">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -147,7 +150,7 @@
             </div>
 
             <!-- Pie Chart -->
-            <div class="col-xl-4 col-lg-5">
+            <div class="col-xl-4 col-lg-5 col-sm">
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -235,11 +238,11 @@
   <link href="../html-Templates/scriptsAdd.html" rel="import" />
 
   <!-- Page level plugins -->
-  <script src="vendor/chart.../js/Chart.min.js"></script>
+  <script src="../vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="../js/demo/chart-area-demo.js"></script>
-  <script src="../js/demo/chart-pie-demo.js"></script>
+  <script src="../vendor/demo/chart-area-demo.js"></script>
+  <script src="../vendor/demo/chart-pie-demo.js"></script>
 
 </body>
 
