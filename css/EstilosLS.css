@@ -290,7 +290,7 @@ header.masthead {
         border-top: 1px solid #eee;
     }
      #sortable-8{ list-style-type: none; margin: 0; 
-            padding: 1em; width: 50%; float:left;}
+            padding: 1em;  float:left;}
      #sortable-8 li{ margin: 0 3px 3px 3px; padding: 1em; 
         padding-left: 4em; font-size: 17px; }
      .default {
