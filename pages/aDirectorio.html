@@ -188,10 +188,10 @@
         </select>
       </div>
       <div class="col-sm-3" style="padding-top:2.5rem">
-        <button type="button" onclick="posicionar()" name="posicionDirectorio" class="btn mb-2"
+        <!-- <button type="button"  name="posicionDirectorio" class="btn mb-2"
           style="background-color: rgb(255,255,153)"><i class="fa fa-xs fa-retweet" aria-hidden="true"></i>
-        </button>
-        <button type="submit" id="enviarPos" class="btn btn-info" name="enviarPos">Cambiar Posiciones</button>
+        </button> -->
+        <button type="submit" onclick="posicionar()" id="enviarPos" class="btn btn-info" name="enviarPos">Cambiar Posiciones</button>
       </div>
       <!-- lista  -->
       <ul id="sortable-8"></ul>
@@ -199,7 +199,7 @@
   </div>
 
   <br>
-  <h3><span id="sortable-9"></span></h3>
+  <h3><span id="sortable-9" class="d-none"></span></h3>
 
   <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

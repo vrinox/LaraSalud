@@ -48,7 +48,7 @@ class  cls_Directorio extends Core{
         $resultado['success']=(count($resultado['directorios'])>0);
         break;
       case 'enviarPos':
-      //TODO: por hacer
+        $resultado= $this->enviarPos();
         break;
       default:
 				$resultado['success']=false;
@@ -106,7 +106,7 @@ class  cls_Directorio extends Core{
 
   public function buscarPremium(){
     $laMatriz=Array();
-    $lsSql="SELECT * FROM directorio WHERE premium='1' AND tipo='".$this->aa_Form['tipo']."'";
+    $lsSql="SELECT * FROM directorio WHERE premium='1' AND tipo='".$this->aa_Form['tipo']."' order by posicion";
     $this->f_Con();
     $lrTb=$this->f_Filtro($lsSql);				
     While($laTupla=$this->f_Arreglo($lrTb)){
@@ -234,6 +234,20 @@ class  cls_Directorio extends Core{
     $result['success'] = $lb_Hecho;
 
     $result['sql'] = $sql;
+    return $result;
+  }
+  public function enviarPos(){
+    $result['mensaje'] = "";
+    $this->f_Con();
+    for ($i=0; $i < count($this->aa_Form['posiciones']); $i++) {
+      $id = $this->aa_Form['posiciones'][$i]['id'];
+      $po = $this->aa_Form['posiciones'][$i]['posicion'];
+      $sql = "UPDATE directorio SET posicion='$po' WHERE id=$id";      
+      $lb_Hecho=$this->f_Ejecutar($sql);
+    }    	
+    $this->f_Des();
+    $result['success']=$lb_Hecho;
+    $result['mensaje']=($lb_Hecho)?"Cambios guradados satisfactoriamente":"Error interno de servidor, por favor inténtelo más tarde";
     return $result;
   }
 }

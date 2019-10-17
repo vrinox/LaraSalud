@@ -14,15 +14,6 @@ tinymce.init({
     '//www.tiny.cloud/css/codepen.min.css'
   ]
 });
-$(function () {
-  $('#sortable-8').sortable({
-    update: function (event, ui) {
-      var posicionOrden = $(this).sortable('toArray').toString();
-      $("#sortable-9").text(posicionOrden);
-      document.getElementById("posicionesD").value = posicionOrden;
-    }
-  });
-});
 
 $("#tipodirectorio")
   .change(function () {
