@@ -37,13 +37,13 @@
 
 <body class="bg-img">
   <a href="larasalud.php"><img class="mb-3 mt-5 ml-auto mr-auto" style="display:block;" src="../imagenes/LOGO.png"></a>
-  <div class="container-fluid w-50 pb-3" style="background-color: rgba(0, 0, 0, 0.3);">
+  <div class="container-fluid col-sm-10 col-md-6 pb-3 pt-4" style="background-color: rgba(0, 0, 0, 0.3);max-width: 337px;">
 
     <h3 class="text-center" style="color: white;">Administrador</h3>
     <div id="error">
     </div>
     <form method="POST" id="form">
-      <fieldset class="formgroup">
+      <fieldset class="formgroup" style="margin: 25px 0px;">
         <input id="pass" class="form-control" type="password" name="clave" placeholder="Escribe la contraseña">
       </fieldset>
       <div class="checkbox">
@@ -51,14 +51,14 @@
           <input type="checkbox" name="permanecerIniciada" value=1>Permanecer Iniciada
         </label>
       </div>
-      <fieldset class="formgroup">
+      <fieldset class="formgroup mt-2">
         <input class="btn btn-info ml-auto mr-auto" style="display:block;" type="button" onclick="login()" name="submit"
           value="Inciar Sesión">
       </fieldset>
     </form>
   </div>
   <link rel="import" href="../html-Templates/scriptsAdd.html">
-  <div id="footer"></div>
+  <div id="footer" style="position: fixed;bottom: 0px; width: 100%;"></div>
   <script src="../js/cargaStandardAdmin.js"></script>
   <script src="../js/login.js"></script>
 </body>
