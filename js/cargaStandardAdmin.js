@@ -17,8 +17,10 @@ function cargarTemplatesS(){
     let link = document.querySelector('link[href="'+baseTemplateUrl+templateOb.name+'.html"]')
     var template = link.import.querySelector('template');
     var clone = document.importNode(template.content, true);
-    //conatiner 
-    document.querySelector('#'+templateOb.id).appendChild(clone);
+    //container 
+    if(document.querySelector('#'+templateOb.id)){
+      document.querySelector('#'+templateOb.id).appendChild(clone);
+    }
   })
   let link = document.querySelector('link[href="'+baseTemplateUrl+'metaAdds.html"]')
   var template = link.import.querySelector('template');
