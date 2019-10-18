@@ -468,6 +468,7 @@ a:focus {
     background: white ;
     color: #6b6b6b;
     transition: all 0.3s;
+    border-right: 1px solid silver;
 }
 
 #sidebar.active {
