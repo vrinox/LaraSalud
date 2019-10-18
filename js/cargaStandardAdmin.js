@@ -1,14 +1,24 @@
 function cargarTemplatesS(){
-  let templates = ['adminHeader','adminFooter'];
+  let templates = [
+    {
+      name:'adminHeader',
+      id:"header"
+    },{
+      name:'adminFooter',
+      id:'footer'
+    },{
+      name:'sidebar',
+      id:"sidebar"
+    }
+  ];
   let baseTemplateUrl = '../html-Templates/'
-  templates.map((templateName)=>{
+  templates.map((templateOb)=>{
     //link
-    let link = document.querySelector('link[href="'+baseTemplateUrl+templateName+'.html"]')
+    let link = document.querySelector('link[href="'+baseTemplateUrl+templateOb.name+'.html"]')
     var template = link.import.querySelector('template');
     var clone = document.importNode(template.content, true);
-    //conatiner    
-    let id = templateName+'Container';
-    document.querySelector('#'+id).appendChild(clone);
+    //conatiner 
+    document.querySelector('#'+templateOb.id).appendChild(clone);
   })
   let link = document.querySelector('link[href="'+baseTemplateUrl+'metaAdds.html"]')
   var template = link.import.querySelector('template');

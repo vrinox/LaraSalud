@@ -8,58 +8,65 @@
   <!-- templates -->
   <link rel="import" href="../html-Templates/adminHeader.html">
   <link rel="import" href="../html-Templates/adminFooter.html">
+  <link rel="import" href="../html-Templates/sidebar.html">
   <link rel="import" href="../html-Templates/categorias.template.html">
   <script src="https://cdn.tiny.cloud/1/bylnd8nuvi8ba0uw0un57vcprn5jyyxbd1so3v7keff4rkgb/tinymce/5/tinymce.min.js"
     referrerpolicy="origin"></script>
-  <title>LS Admin - Categorias</title>
+  <title>LS Admin - Inicio</title>
 </head>
 
-<!--Portada y navegacion-->
+<body id="page-top">
+  <!-- wapper -->
+  <div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar"></nav>
 
-<body id="page-top" class="">
+    <!-- Page Content  -->
+    <div id="content">
+      <!-- Header -->
+      <nav id="header" class="navbar navbar-expand-lg navbar-light bg-light"></nav>
 
-  <div id="adminHeaderContainer"></div>
-
-  <!-- Begin Page Content -->
-  <div class="container-fluid ">
-
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Ajustar Categorias</h1>
-    </div>
-
-    <form method="POST">
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Categoría</label>
-        <input type="input" class="form-control"  name="categoria" id="nombre"  placeholder="ej. Psicología">
+      <!-- Page Heading -->
+      <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Ajustar Categorias</h1>
       </div>
-      
-      <button type="button"id="agregar" name="agregar" class="btn mb-2" style="background-color: rgb(255,255,153)">
-        <i class="fa fa-xs fa-plus" aria-hidden="true"></i>Agregar
-      </button>
-      <button type="button"  id="buscar" name="buscar" class="btn mb-2" style="background-color: rgb(255,255,153)">
-        <i class="fa fa-xs fa-search" aria-hidden="true"></i>Buscar
-      </button>
-    </form>
 
-    <!-- Content Row -->
-    <div class="row">
-      <!-- Formulario de especialidades-->
-      <table id="busqueda" class="contanier mb-5 mt-2" width="40%">
-        <thead>
+      <form method="POST">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Categoría</label>
+          <input type="input" class="form-control" name="categoria" id="nombre" placeholder="ej. Psicología">
+        </div>
+
+        <button type="button" id="agregar" name="agregar" class="btn mb-2" style="background-color: rgb(255,255,153)">
+          <i class="fa fa-xs fa-plus" aria-hidden="true"></i>Agregar
+        </button>
+        <button type="button" id="buscar" name="buscar" class="btn mb-2" style="background-color: rgb(255,255,153)">
+          <i class="fa fa-xs fa-search" aria-hidden="true"></i>Buscar
+        </button>
+      </form>
+
+      <!-- Content Row -->
+      <div class="row">
+        <!-- Formulario de especialidades-->
+        <table id="busqueda" class="contanier mb-5 mt-2" width="40%">
+          <thead>
             <tr>
               <th width="82%">Categorias</th>
               <th width="9%">Modificar</th>
               <th width="9%">Eliminar</th>
             </tr>
-        </thead>
-       <tbody id="listaContainer">
+          </thead>
+          <tbody id="listaContainer">
 
-       </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Fin Page Content  -->
     </div>
-    <div id="adminFooterContainer"></div>
+    <!-- Fin Wrapper  -->
   </div>
+  <div id="footer"></div>
   <link rel="import" href="../html-Templates/scriptsAdd.html">
   <script src="../js/cargaStandardAdmin.js"></script>
   <script src="../js/aCategorias.js"></script>

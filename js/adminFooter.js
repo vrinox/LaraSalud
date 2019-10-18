@@ -128,3 +128,10 @@ function post(json,headers = {}){
     });
   });
 }
+
+// side bar
+$(document).ready(function () {
+  $('#sidebarCollapse').on('click', function () {
+      $('#sidebar').toggleClass('active');
+  });
+});

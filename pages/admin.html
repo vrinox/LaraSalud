@@ -8,243 +8,207 @@
   <!-- templates -->
   <link rel="import" href="../html-Templates/adminHeader.html">
   <link rel="import" href="../html-Templates/adminFooter.html">
+  <link rel="import" href="../html-Templates/sidebar.html">
+  <link rel="import" href="../html-Templates/directorio.templates.html">
+  <script src="https://cdn.tiny.cloud/1/bylnd8nuvi8ba0uw0un57vcprn5jyyxbd1so3v7keff4rkgb/tinymce/5/tinymce.min.js"
+    referrerpolicy="origin"></script>
   <title>LS Admin - Inicio</title>
 </head>
 
 <body id="page-top">
-  <!-- Page Wrapper -->
-  <div id="wrapper">
-    <!-- Sidebarr -->
-    <link rel="import" href="../html-Templates/sidebar.html">
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+  <!-- wapper -->
+  <div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar"></nav>
 
-      <!-- Main Content -->
-      <div id="content">
-        <!-- header -->
-        <link href="../html-Templates/adminHeader.html" rel="import" />
+    <!-- Page Content  -->
+    <div id="content">
+      <!-- Header -->
+      <nav id="header" class="navbar navbar-expand-lg navbar-light bg-light"></nav>
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
+      
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Inicio</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info disabled shadow-sm"><i
-                class="fas fa-download fa-sm text-white-50"></i>Generar Reporte</a>
-          </div>
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Visitas (Mensuales) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Visitas (Mensuales)</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">40.000</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-user-plus fa-2x text-gray-300"></i>
+              <h1 class="h3 mb-0 text-gray-800">Inicio</h1>
+              <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-info disabled shadow-sm"><i
+                  class="fas fa-download fa-sm text-white-50"></i>Generar Reporte</a>
+            </div>
+  
+            <!-- Content Row -->
+            <div class="row">
+  
+              <!-- Visitas (Mensuales) Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Visitas (Mensuales)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">40.000</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-user-plus fa-2x text-gray-300"></i>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Directorio registrados Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Directorio Registrado</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+  
+              <!-- Directorio registrados Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Directorio Registrado</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">100</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <!-- Almacenamiento Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Almacenamiento</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">20%</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20"
-                              aria-valuemin="0" aria-valuemax="100"></div>
+  
+              <!-- Almacenamiento Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Almacenamiento</div>
+                        <div class="row no-gutters align-items-center">
+                          <div class="col-auto">
+                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">20%</div>
+                          </div>
+                          <div class="col">
+                            <div class="progress progress-sm mr-2">
+                              <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <div class="col-auto">
+                        <i class="fas fa-save fa-2x text-gray-300"></i>
+                      </div>
                     </div>
-                    <div class="col-auto">
-                      <i class="fas fa-save fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Fecha vencimiento Card Example -->
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Fecha de Vencimiento</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">18/07/2020</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
-            <!-- Fecha vencimiento Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Fecha de Vencimiento</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18/07/2020</div>
+  
+            <!-- Content Row -->
+  
+            <div class="row">
+  
+              <!-- Area Chart -->
+              <div class="col-xl-8 col-lg-7 col-sm">
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Dropdown -->
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Visitas Gráfico</h6>
+                    <div class="dropdown no-arrow">
+                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header"></div>
+                        <a class="dropdown-item" href="#"></a>
+                        <a class="dropdown-item" href="#"></a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"></a>
+                      </div>
                     </div>
-                    <div class="col-auto">
-                      <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                  <!-- Card Body -->
+                  <div class="card-body">
+                    <div class="chart-area">
+                      <canvas id="myAreaChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Pie Chart -->
+              <div class="col-xl-4 col-lg-5 col-sm">
+                <div class="card shadow mb-4">
+                  <!-- Card Header - Dropdown -->
+                  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Directorio Gráfico</h6>
+                    <div class="dropdown no-arrow">
+                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                        aria-labelledby="dropdownMenuLink">
+                        <div class="dropdown-header"></div>
+                        <a class="dropdown-item" href="#"></a>
+                        <a class="dropdown-item" href="#"></a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"></a>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Card Body -->
+                  <div class="card-body">
+                    <div class="chart-pie pt-4 pb-2">
+                      <canvas id="myPieChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-center small">
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-primary"></i> Médicos
+                      </span>
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-success"></i> Clínicas
+                      </span>
+                      <span class="mr-2">
+                        <i class="fas fa-circle text-info"></i> Otros
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <!-- Content Row -->
-
-          <div class="row">
-
-            <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7 col-sm">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Visitas Gráfico</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                      aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header"></div>
-                      <a class="dropdown-item" href="#"></a>
-                      <a class="dropdown-item" href="#"></a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#"></a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pie Chart -->
-            <div class="col-xl-4 col-lg-5 col-sm">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Directorio Gráfico</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                      aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header"></div>
-                      <a class="dropdown-item" href="#"></a>
-                      <a class="dropdown-item" href="#"></a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#"></a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Médicos
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Clínicas
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Otros
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-          <!-- Footer -->
-          <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-              <div class="copyright text-center my-auto">
-                <span>Copyright &copy; Edmara Guerrero 2019</span>
-              </div>
-            </div>
-          </footer>
-          <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-      </div>
-      <!-- End of Page Wrapper -->
+  
+  
+      <!-- Fin Page Content  -->
     </div>
+    <!-- Fin Wrapper  -->
   </div>
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+  <div id="footer"></div>
+   <!-- import de todos los js generales -->
+   <link href="../html-Templates/scriptsAdd.html" rel="import" />
 
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesión</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">¿Estas seguro(a) que deseas salir de la sesión?</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="adminlogin.php?Logout=1">Salir</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- import de todos los js generales -->
-  <link href="../html-Templates/scriptsAdd.html" rel="import" />
-
-  <!-- Page level plugins -->
-  <script src="../vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="../vendor/demo/chart-area-demo.js"></script>
-  <script src="../vendor/demo/chart-pie-demo.js"></script>
-
+   <!-- Page level plugins -->
+   <script src="../vendor/chart.js/Chart.min.js"></script>
+ 
+   <!-- Page level custom scripts -->
+   <script src="../vendor/demo/chart-area-demo.js"></script>
+   <script src="../vendor/demo/chart-pie-demo.js"></script>
+   <link rel="import" href="../html-Templates/scriptsAdd.html">
+   <script src="../js/cargaStandardAdmin.js"></script>
 </body>
 
 </html>
