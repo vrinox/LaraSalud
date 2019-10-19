@@ -1,6 +1,6 @@
 verificarSesion();
 tinymce.init({
-  selector: 'textarea#basic-example',
+  selector: 'textarea#contenido',
   height: 500,
   menubar: false,
   plugins: [
@@ -25,40 +25,7 @@ $("#tipodirectorio")
   })
   .change();
 
-function catmodif(id) {
 
-  var idModal = 'edit' + id;
-  var catm = $('#cat-modificada' + id).val().toUpperCase();
-  if (catm.trim() == '') {
-    alert('Por favor introduzca nueva categoria');
-    $('#cat-modificada' + id).focus();
-    return false;
-  }
-  else {
-    $.ajax({
-      url: 'https://larasalud.com/php/modificar.php',
-      type: 'POST',
-      dataType: 'html',
-      data: "id=" + id + "&tabla=categorias&columna=categoria&fila=id&valor=" + catm,
-      beforeSend: function () {
-        $('#catmodificar').css({
-          'display': 'block'
-        });
-      },
-    })
-      .done(function (data) {
-        alert("Categoria modificada satisfactoriamente!");
-        $('#' + idModal + ' .close').click();
-      })
-      .fail(function () {
-        console.log('Error');
-      })
-      .always(function () {
-        console.log("complete");
-      });
-
-  }
-}
 
 function espmodif(id) {
   var idModalesp = 'ed' + id;

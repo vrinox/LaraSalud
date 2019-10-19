@@ -195,10 +195,7 @@ class  cls_Directorio extends Core{
     {   
       $premiun = $this->buscarPremium();
       $posicion = count($result) + 1;
-  
-      $dir_subida = "imagenes/logos/".$tipoD."/";
-      $logo_subido = $dir_subida.basename($_FILES['logoD']['name']);
-      //esta es una validacion en el caso que el usuario no suba imagen se coloca un icono que ya esta en el servidor
+      //capturo la imagen del logo
       $result = $this->captaLogo('insertar');
       if($premium=="1"){
         $posicionStr = ",'".$posicion."'";

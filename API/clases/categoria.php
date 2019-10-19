@@ -58,6 +58,16 @@ class  cls_Categoria extends Core{
 		$this->f_Des();
 		return $lb_Hecho;
 	}
+	
+	public function modificar(){
+		$lb_Hecho = false; 
+		$lsSql = "UPDATE categorias SET categoria='".$this->aa_Form['nombre']."' WHERE id = '".$this->aa_Form['id']."';";
+		$this->f_Con();
+		$lb_Hecho=$this->f_Ejecutar($lsSql);		
+		$this->f_Des();
+		return $lb_Hecho;
+	}
+
 	public function validar(){							
     $lb_Enc=false;	    
 		$lsSql="SELECT * FROM categorias WHERE categoria='".$this->aa_Form['categoria']."' LIMIT 1;";			
@@ -87,7 +97,6 @@ class  cls_Categoria extends Core{
 					$resultado['success'] = $this->agregar();
 					if(!$resultado['success']){
 						$resultado['mensaje'] = "Error al guardar categoria";
-						$resultado['sql'] = "INSERT INTO categorias (categoria) values ('".$this->aa_Form['categoria']."');";
 					}
 				}else{
 					$resultado['success']=false;
@@ -98,7 +107,12 @@ class  cls_Categoria extends Core{
 				$resultado['success'] = $this->borrar();
 				if(!$resultado['success']){
 					$resultado['mensaje'] = "Error al borrar categoria";
-					$resultado['sql'] = "INSERT INTO categorias (categoria) values ('".$this->aa_Form['categoria']."');";
+				}					
+				break;
+			case 'modificar':
+				$resultado['success'] = $this->modificar();
+				if(!$resultado['success']){
+					$resultado['mensaje'] = "Error al modificar categoria";
 				}					
 				break;
 			default:

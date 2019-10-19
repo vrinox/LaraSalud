@@ -95,3 +95,31 @@ function cargarTemplatesCategorias(){
   }
   return templates;
 }
+
+function catmodif(id) {
+
+  var idModal = 'edit' + id;
+  var catm = $('#cat-modificada' + id).val().toUpperCase();
+  if (catm.trim() == '') {
+    alert('Por favor introduzca nueva categoria');
+    $('#cat-modificada' + id).focus();
+    return false;
+  }
+  else {
+    let json = {
+      "modelo":"categoria",
+      "operacion":"modificar",
+      "id":id,
+      "nombre":catm
+    }
+    $('#catmodificar').css({
+      'display': 'block'
+    });
+    postAd(json)
+      .then(()=>{
+        alert("Categoria modificada satisfactoriamente!");
+        $('#' + idModal + ' .close').click();
+        listar();
+      })
+  }
+}
