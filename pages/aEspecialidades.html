@@ -9,7 +9,7 @@
   <link rel="import" href="../html-Templates/adminHeader.html">
   <link rel="import" href="../html-Templates/adminFooter.html">
   <link rel="import" href="../html-Templates/sidebar.html">
-  <link rel="import" href="../html-Templates/directorio.templates.html">
+  <link rel="import" href="../html-Templates/especialidades.templates.html">
   <script src="https://cdn.tiny.cloud/1/bylnd8nuvi8ba0uw0un57vcprn5jyyxbd1so3v7keff4rkgb/tinymce/5/tinymce.min.js"
     referrerpolicy="origin"></script>
   <title>LS Admin - Inicio</title>
@@ -32,42 +32,46 @@
   
       <form method="POST">
         <div class="form-group">
-          <label for="exampleFormControlInput1">Especialidad</label>
-          <input type="input" class="form-control" id="exampleFormControlInput1" name="especialidad"
+          <label for="nombre">Especialidad</label>
+          <input type="input" class="form-control" id="nombre" name="nombre"
             placeholder="ej. Psicología">
         </div>
   
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="medicos" id="inlineCheckbox1" value="1">
-          <label class="form-check-label" for="inlineCheckbox1">Médicos</label>
+          <input class="form-check-input" type="radio" name="profesional" id="profesional" value="1">
+          <label class="form-check-label" for="tipo">Médicos</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="medicos" id="inlineCheckbox2" value="0">
-          <label class="form-check-label" for="inlineCheckbox2">Otras Especialidades</label>
+          <input class="form-check-input" type="radio" name="profesional" id="profesional" value="0">
+          <label class="form-check-label" for="tipo">Otras Especialidades</label>
         </div>
-        <button type="submit" name="agregar" class="btn mb-2" style="background-color: rgb(255,255,153)">Agregar</button>
+        <button type="button" name="agregar" id="agregar" class="btn mb-2" style="background-color: rgb(255,255,153)">Agregar</button>
         <div class="form-group mt-2">
-          <label for="exampleFormControlSelect1">Buscar especialidades existentes</label>
-          <select name="busqueda" class="form-control" id="exampleFormControlSelect1">
+          <label for="busqueda">Buscar especialidades existentes</label>
+          <select name="busqueda" class="form-control" id="busqueda">
             <option value="M">Médicos</option>
             <option value="O">Otras especialidades</option>
           </select>
         </div>
-        <button type="submit" name="buscar" class="btn mb-2" style="background-color: rgb(255,255,153)">Buscar</button>
+        <button type="button" name="buscar" id="buscar" class="btn mb-2" style="background-color: rgb(255,255,153)">Buscar</button>
       </form>
   
       <!-- Content Row -->
       <div class="row">
         <!-- Formulario de especialidades-->
-        <table id="busqueda" class="ml-5 mr-5 mt-2" width="40%">
-          <tr>
-            <th width="82%">Especialidades</th>
-            <th width="9%">Modificar</th>
-            <th width="9%">Eliminar</th>
-          </tr>
-          <div id="listaContainer"></div>
-        </table>
-      </div>
+        <table id="busqueda" class="contanier mb-5 mt-2" width="40%">
+            <thead>
+              <tr>
+                <th width="82%">Categorias</th>
+                <th width="9%">Modificar</th>
+                <th width="9%">Eliminar</th>
+              </tr>
+            </thead>
+            <tbody id="listaContainer">
+  
+            </tbody>
+          </table>
+        </div>
       
       <!-- Fin Page Content  -->
     </div>
@@ -76,7 +80,7 @@
   <div id="footer"></div>
   <link rel="import" href="../html-Templates/scriptsAdd.html">
   <script src="../js/cargaStandardAdmin.js"></script>
-  <script src="../js/aDirectorio.js"></script>
+  <script src="../js/aEspecialidades.js"></script>
 </body>
 
 </html>

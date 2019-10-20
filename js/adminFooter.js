@@ -25,41 +25,6 @@ $("#tipodirectorio")
   })
   .change();
 
-
-
-function espmodif(id) {
-  var idModalesp = 'ed' + id;
-  var espm = $('#esp-modificada' + id).val().toUpperCase();
-
-  if (espm.trim() == '') {
-    alert('Por favor introduzca nueva especialidad');
-    $('#esp-modificada').focus();
-    return false;
-  }
-  else {
-    $.ajax({
-      url: 'https://larasalud.com/php/modificar.php',
-      type: 'POST',
-      dataType: 'html',
-      data: "id=" + id + "&tabla=especialidades&columna=especialidad&valor=" + espm + "&columna2=profesional&valor2=" + valor2 + "&fila=id",
-      beforeSend: function () {
-        $('#espmodificar').css({
-          'display': 'block'
-        });
-      },
-    })
-      .done(function (data) {
-        alert("Especialidad modificada satisfactoriamente!");
-        $('#' + idModalesp + ' .close').click();
-      })
-      .fail(function () {
-        console.log('Error');
-      })
-      .always(function () {
-        console.log("complete" + valor2 + idModalesp + espm);
-      });
-  }
-}
 function cerrarSesion(){
   let json = {
     "modelo":"usuario",
