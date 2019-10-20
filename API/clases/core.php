@@ -35,7 +35,7 @@ class Core {
 		mysqli_close($this->ar_Con);											
 	}																		
 	protected function f_Begin(){											
-		mysqli_query($this->ar_Con,"BEGIN");									
+		mysqli_query($this->ar_Con,"START TRANSACTION");									
 	}																		
 	protected function f_Commit(){											
 		mysqli_query($this->ar_Con,"COMMIT");								
@@ -46,6 +46,17 @@ class Core {
 	protected function f_Registro($prTb){
 		$li_Registros=mysqli_num_rows($prTb);
 		return $li_Registros;
+	}
+	protected function f_GetError(){
+		return mysqli_error($this->ar_Con);
+	}
+	protected function f_EjecutarMultiple($ps_Sql){
+		$lb_Hecho=false;													
+		mysqli_multi_query($this->ar_Con,$ps_Sql);									
+		if(mysqli_affected_rows($this->ar_Con)>0){							
+			$lb_Hecho=true;													
+		}																	
+		return $lb_Hecho;
 	}
 }
 ?>

@@ -1,9 +1,9 @@
 arranque();
 function arranque() {
   cargarMedicos();
-  cargarCategorias();  
+  cargarCategorias();
 }
-function cargarMedicos(){
+function cargarMedicos() {
   let select = document.querySelector('#autor');
   let json = {
     "modelo": "medico",
@@ -20,7 +20,7 @@ function cargarMedicos(){
     }
   })
 }
-function cargarCategorias(){
+function cargarCategorias() {
   let json = {
     "modelo": "categoria",
     "operacion": "listar"
@@ -32,7 +32,7 @@ function cargarCategorias(){
       data.categorias.forEach((categoria) => {
         let nombre = categoria.categoria;
         let valor = categoria.id;
-       html+=`<input type="checkbox" name="${nombre}" value="${valor}" id="${nombre}" />
+        html += `<input type="checkbox" name="${nombre}" value="${valor}" id="${nombre}" />
        <label class="list-group-item" for="${nombre}">${nombre}</label>`;
       })
       contenedor.innerHTML = html;
@@ -45,8 +45,12 @@ function limpiar() {
   let selects = Array.from(document.querySelector('#form').querySelectorAll('select'));
   let textarea = Array.from(document.querySelector('#form').querySelectorAll('textarea'));
   let todos = inputs.concat(selects).concat(textarea);
-  todos.forEach((each) => {
-    each.value = '';
+  todos.forEach((each) => {    
+    if(each.type == 'checkbox'){
+      each.checked = false;
+    }else{
+      each.value = '';
+    }
   });
   //tinyMCE
   tinyMCE.get('contenido').setContent('');
@@ -59,7 +63,7 @@ function getFormValues() {
     let textarea = Array.from(document.querySelector('#form').querySelectorAll('textarea'));
     let todos = inputs.concat(selects).concat(textarea);
     todos.forEach((each) => {
-      if (each.type !== 'file' && each.type !== 'checkbox' ) {
+      if (each.type !== 'file' && each.type !== 'checkbox') {
         valores[each.name] = each.value;
         if (each.name == "id") {
           valores[each.name] = parseInt(each.value);
@@ -70,12 +74,12 @@ function getFormValues() {
     valores['contenido'] = escapeHtml(tinyMCE.get('contenido').getContent({ format: 'raw' }));
     //checkbox 
     let categorias = Array.from(document.querySelector('#form').querySelectorAll('input[type="checkbox"]'))
-    .map((input)=>{
-      if(input.checked){
-        return input.value;
-      }
-    })
-    .filter(Boolean);
+      .map((input) => {
+        if (input.checked) {
+          return input.value;
+        }
+      })
+      .filter(Boolean);
     valores['categorias'] = categorias;
     console.log(valores)
     resolve(valores);
@@ -178,14 +182,14 @@ function agregar() {
         json.operacion = 'agregar';
         //mezclo los objetos para mantener las anteriores 
         json = { ...json, ...values };
-        // return postAd(json);
+        return postAd(json);
       })
-      // .then((data) => {
-      //   alert(data.mensaje);
-      //   if (data.success) {
-      //     limpiar();
-      //   }
-      // });
+      .then((data) => {
+        alert(data.mensaje);
+        if (data.success) {
+          limpiar();
+        }
+      });
   }
 }
 function buscar() {

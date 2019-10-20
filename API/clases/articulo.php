@@ -60,15 +60,13 @@ class  cls_Articulo extends Core{
 		$result['sql']['articulo'] = $sql;
 		//conecto a la base de datos
 		$this->f_Con();
-		//inicio transact
-		$this->f_Begin();
 		//ejecuto el insert del nuevo articulo
 		$lb_Hecho=$this->f_Ejecutar($sql);
 		if($lb_Hecho){
 			//reinicio la variable de control para supervicion
 			$lb_Hecho = false;
 			//busco el ultimo id insertado
-			$sql = "SELECT LAST_INSERT_ID();";
+			$sql = "SELECT id from articulos where titulo = '".$this->aa_Form["titulo"]."' LIMIT 1";
 			$lr_Tabla=$this->f_Filtro($sql);				
 			if($la_Tupla=$this->f_Arreglo($lr_Tabla)){
 				//asigno el id para usarlo mas tarde
@@ -81,15 +79,16 @@ class  cls_Articulo extends Core{
 				$categoria_id = $this->aa_Form['categorias'][$x];
 				$sql .= "INSERT INTO categoria_articulo (categoria_id,articulo_id) VALUES ($categoria_id,$id);";
 			}
-			//ejecuto una sola vez todo el blocque de sql
+			//ejecuto una sola vez todo el bloque de sql
 			$result['sql']['categorias'] = $sql;
-			$lb_Hecho=$this->f_Ejecutar($sql);
+			//como ejecuto un bloque de codigo y no una sola linea uso el multiple
+			$lb_Hecho=$this->f_EjecutarMultiple($sql);
 		}
+		
+		
 
-		if($lb_Hecho){
-			$this->f_Commit();
-		}else{
-			$this->f_RollBack();
+		if(!$lb_Hecho){
+			$result['error'] = $this->f_GetError();
 		}
 		$this->f_Des();
 			
