@@ -31,29 +31,37 @@
       <form method="POST" id="form" name="form">
         <div class="form-group">
           <label for="titulo">Título</label>
-          <input type="input" class="form-control" id="titulo" name="titulo">
+          <input type="input" class="form-control" id="titulo" name="titulo" required>
         </div>
         <div class="form-group">
           <label for="subtitulo">Subtítulo</label>
-          <input type="input" class="form-control" id="subtitulo" name="subtitulo">
+          <input type="input" class="form-control" id="subtitulo" name="subtitulo" required>
         </div>
         <div class="form-group">
           <i class="fas fa-angle-double-right prefix"></i>
-          <label for="descripcion">Metadescripción</label>
-          <textarea id="descripcion" class="md-textarea form-control" rows="3" name="descripcion"></textarea>
+          <label for="resumen">Metadescripción</label>
+          <textarea id="resumen" class="md-textarea form-control" rows="3" name="resumen" required></textarea>
         </div>
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-4">
             <div class="form-group">
-              <label for="imagenuno">Imagen principal</label>
-              <div><input name="iprincipal"  accept="image/*" type="file" class="form-control-file" id="imagenuno"></div>
+              <label for="imgprincipal">Imagen principal</label>
+              <div><input name="imgprincipal" accept="image/*" type="file" class="form-control-file" id="imgprincipal">
+              </div>
             </div>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-4">
             <div class="form-group">
-              <label for="imagendos">Imagen secundaria</label>
-              <div><input name="iSecundaria" type="file" class="form-control-file" id="imagendos"
+              <label for="imgsecundaria">Imagen secundaria</label>
+              <div><input name="imgsecundaria" type="file" class="form-control-file" id="imgsecundaria"
                   accept="image/*">
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="imgcard">Imagen Exterior</label>
+              <div><input name="imgcard" type="file" class="form-control-file" id="imgcard" accept="image/*">
               </div>
             </div>
           </div>
@@ -66,10 +74,11 @@
           </div>
           <div class="form-group mt-2">
             <label for="autor">Seleccionar autor</label>
-            <select name="autor" class="form-control" id="autor">
-
-            </select>
+            <select name="autor" class="form-control" id="autor" required></select>
           </div>
+          <h4>Categoria</h4>
+          <div class="list-group" id="categorias"></div>
+
           <button type="button" onclick="agregar()" name="agregarArticulo" class="btn mb-2"
             style="background-color: rgb(255,255,153)">Agregar</button>
 

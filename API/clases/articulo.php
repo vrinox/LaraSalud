@@ -51,26 +51,48 @@ class  cls_Articulo extends Core{
 		$lb_Hecho = false;
 
 		//obtengo las imagenes
-		$imagenuno = $this->gestionaImagen($this->aa_Form["imagenuno"],'iP');
-		if($imagenuno['success']){
-			$imagendos = $this->gestionaImagen($this->aa_Form["imagendos"],'iS');
-			if($imagendos['success']){
-				$sql = "INSERT INTO articulo";
-				$sql.= "(titulo,subtitulo,descripcion,imagenuno,imagendos,contenido,enlace,autor) ";
-				$sql.= "VALUES('".$this->aa_Form["titulo"]."','".$this->aa_Form["subtitulo"]."','".$this->aa_Form["descripcion"]."'";
-				$sql.=",'".$imagenuno['ruta']."','".$imagendos['ruta']."','".$this->aa_Form["contenido"]."','".$this->aa_Form["enlace"]."'";
-				$sql.=",'".$this->aa_Form["autor"]."')";
-			
-				$this->f_Con();
-				$lb_Hecho=$this->f_Ejecutar($sql);		
-				$this->f_Des();
-			}else{
-				$result['error'] = $imagendos['mensaje'];
-			}
-		}else{
-			$result['error'] = $imagenuno['mensaje'];
-		}		
 		
+		$sql = "INSERT INTO articulos";
+		$sql.= "(titulo,subtitulo,resumen,imgprincipal,imgsecundaria,imgcard,contenido,enlace,autor,fecha) ";
+		$sql.= "VALUES('".$this->aa_Form["titulo"]."','".$this->aa_Form["subtitulo"]."','".$this->aa_Form["resumen"]."','".$this->aa_Form['imgprincipal']."'";
+		$sql.=",'".$this->aa_Form['imgsecundaria']."','".$this->aa_Form['imgcard']."','".$this->aa_Form["contenido"]."','".$this->aa_Form["enlace"]."'";
+		$sql.=",'".$this->aa_Form["autor"]."','".date("Y-m-d_H:i:s")."')";
+		$result['sql']['articulo'] = $sql;
+		//conecto a la base de datos
+		$this->f_Con();
+		//inicio transact
+		$this->f_Begin();
+		//ejecuto el insert del nuevo articulo
+		$lb_Hecho=$this->f_Ejecutar($sql);
+		if($lb_Hecho){
+			//reinicio la variable de control para supervicion
+			$lb_Hecho = false;
+			//busco el ultimo id insertado
+			$sql = "SELECT LAST_INSERT_ID();";
+			$lr_Tabla=$this->f_Filtro($sql);				
+			if($la_Tupla=$this->f_Arreglo($lr_Tabla)){
+				//asigno el id para usarlo mas tarde
+				$id = $la_Tupla['id'];
+			}				
+			$this->f_Cierra($lr_Tabla);						
+			$sql = '';
+			//inicio ciclo para crear un solo sql para todas las categorias a insertas
+			for($x = 0; $x < count($this->aa_Form['categorias']);$x++){
+				$categoria_id = $this->aa_Form['categorias'][$x];
+				$sql .= "INSERT INTO categoria_articulo (categoria_id,articulo_id) VALUES ($categoria_id,$id);";
+			}
+			//ejecuto una sola vez todo el blocque de sql
+			$result['sql']['categorias'] = $sql;
+			$lb_Hecho=$this->f_Ejecutar($sql);
+		}
+
+		if($lb_Hecho){
+			$this->f_Commit();
+		}else{
+			$this->f_RollBack();
+		}
+		$this->f_Des();
+			
 		$result['mensaje']=($lb_Hecho)?"Articulo agregado exitosamente":"No hemos podido completar el registro, por favor inténtelo más tarde";
 		$result['success'] = $lb_Hecho;
 
@@ -87,8 +109,11 @@ class  cls_Articulo extends Core{
 				$resultado['articulos'] = $this->listar();
 				$resultado['success']=(count($resultado['articulos'])>0);
 				break;
+			case 'subirImagen':
+				$resultado = $this->gestionaImagen($this->aa_Form['base64'],$this->aa_Form['nombre']);
+				break;
 			case 'agregar':
-				$resultado['success'] = $this->agregar();
+				$resultado = $this->agregar();
 				if($resultado['success']){
 					$resultado['articulo']=$this->f_GetsForm();
 					$resultado['mensaje'] = 'Articulo agregardo con exito';
@@ -123,8 +148,8 @@ class  cls_Articulo extends Core{
 					throw new \Exception('did not match data URI with image data');
 			}
 			
-			$nombre .= date("Y-m-d_H:i:s");
-			$ruta = "/home2/larasalu/public_html/imagenes/articulos/{$nombre}.{$type}";
+			$nombreCompleto = $nombre.date("Y-m-d_H:i:s");
+			$ruta = "/home2/larasalu/public_html/imagenes/articulos/{$nombreCompleto}.{$type}";
 			file_put_contents($ruta, $data);
 			$mensaje = "El logo es válido y se subió con éxito<br>";  
 		}catch(Exception $e){        
